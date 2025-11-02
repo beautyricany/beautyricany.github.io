@@ -1,0 +1,232 @@
+---
+import Hero from '../components/hero.astro';
+
+// About section content - to be included in index page
+---
+
+<Hero />
+
+        <section class="about-intro">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>About Our Studio</h2>
+                        <p>Welcome to Permanent Beauty, where artistry meets expertise in the world of permanent cosmetics. Since our establishment, we've been dedicated to helping our clients feel confident and beautiful every single day.</p>
+                        <p>Our state-of-the-art studio provides a comfortable, professional environment where you can relax while our certified specialists work their magic. We believe in enhancing your natural beauty with subtle, sophisticated techniques that stand the test of time.</p>
+                        <p>Every treatment begins with a thorough consultation to understand your goals, preferences, and unique features. We take pride in creating customized solutions that complement your individual style and lifestyle.</p>
+                    </div>
+                    <div class="about-image-large">
+                        <div class="placeholder-image">Studio Interior Photo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="studio-highlights">
+            <div class="container">
+                <h2 class="section-title">What Makes Us Special</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💄</div>
+                        <h3>Expert Artistry</h3>
+                        <p>Our certified specialists have years of experience and continue training in the latest permanent makeup techniques.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h3>Premium Products</h3>
+                        <p>We use only FDA-approved pigments and state-of-the-art equipment for superior, long-lasting results.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Safety First</h3>
+                        <p>Strict sterilization protocols and the highest hygiene standards ensure your safety and peace of mind.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👤</div>
+                        <h3>Personalized Approach</h3>
+                        <p>Each treatment is customized to your facial features, skin tone, and personal style preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="studio-gallery-preview">
+            <div class="container">
+                <h2 class="section-title">Our Studio</h2>
+                <div class="studio-images-grid">
+                    <div class="studio-image">
+                        <div class="placeholder-image">Reception Area</div>
+                    </div>
+                    <div class="studio-image">
+                        <div class="placeholder-image">Treatment Room</div>
+                    </div>
+                    <div class="studio-image">
+                        <div class="placeholder-image">Consultation Space</div>
+                    </div>
+                    <div class="studio-image">
+                        <div class="placeholder-image">Products & Equipment</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="our-approach">
+            <div class="container">
+                <h2 class="section-title">Our Approach</h2>
+                <div class="approach-content">
+                    <div class="approach-item">
+                        <h3>🔍 Detailed Consultation</h3>
+                        <p>We begin with an in-depth discussion of your beauty goals, lifestyle, and expectations. We'll examine your features and recommend the best treatments for you.</p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>🎯 Custom Design</h3>
+                        <p>Every face is unique. We create a customized design that enhances your natural features and complements your facial structure and coloring.</p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>✨ Professional Application</h3>
+                        <p>Using advanced techniques and premium products, we carefully apply your permanent makeup with precision and artistry.</p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>💝 Aftercare Support</h3>
+                        <p>We provide comprehensive aftercare instructions and follow-up support to ensure perfect healing and results you'll love.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Experience the Difference?</h2>
+                <p>Contact us to learn more about how permanent beauty can simplify your routine.</p>
+                <a href="/contact" class="btn btn-primary">Get In Touch</a>
+            </div>
+        </section>
+
+<style>
+    /* ===================================
+    About Page
+    =================================== */
+    .about-content {
+        padding: 5rem 0;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .about-text p {
+        color: var(--color-text-light);
+        line-height: 1.8;
+    }
+
+    .about-image, .placeholder-image {
+        background: linear-gradient(135deg, var(--color-bg-light) 0%, #E0E0E0 100%);
+        border-radius: var(--border-radius);
+        aspect-ratio: 4/3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-text-light);
+        font-weight: 600;
+        min-height: 250px;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .team-member {
+        text-align: center;
+        padding: 2rem;
+        background-color: var(--color-accent);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: transform var(--transition-speed);
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+
+    .member-image {
+        margin-bottom: 1.5rem;
+    }
+
+    .member-image .placeholder-image {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .member-role {
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .values {
+        background-color: var(--color-bg-light);
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .value-item {
+        padding: 2rem;
+        background-color: var(--color-accent);
+        border-radius: var(--border-radius);
+        border-left: 4px solid var(--color-primary);
+    }
+
+    .value-item h3 {
+        color: var(--color-secondary);
+        margin-bottom: 0.75rem;
+    }
+
+    .value-item p {
+        color: var(--color-text-light);
+        margin-bottom: 0;
+    }
+
+    /* ===================================
+       Responsive Design
+       =================================== */
+    @media (max-width: 768px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .about-image-large {
+            order: -1;
+            min-height: 300px;
+        }
+
+        .hero {
+            padding: 4rem 1rem;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .features-grid,
+        .studio-images-grid,
+        .approach-content {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

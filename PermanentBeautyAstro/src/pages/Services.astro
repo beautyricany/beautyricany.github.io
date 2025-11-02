@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+// Services page content - can be included in main layout or used standalone
+const services = [
+    {
+        title: "Microblading",
+        price: "Starting at $450",
+        description: "Transform your eyebrows with our signature microblading technique. This semi-permanent treatment creates natural-looking, hair-like strokes that fill in sparse areas and define your brow shape.",
+        features: [
+            "Natural, hair-like strokes",
+            "Customized shape and color",
+            "Lasts 12-18 months",
+            "Includes touch-up session"
+        ],
+        image: "Microblading Image",
+        reverse: false
+    },
+    {
+        title: "Permanent Eyeliner",
+        price: "Starting at $375",
+        description: "Wake up with perfectly defined eyes every morning. Our permanent eyeliner enhances your lash line with a subtle or dramatic look that won't smudge or fade throughout the day.",
+        features: [
+            "Top, bottom, or both lash lines",
+            "Various styles available",
+            "Waterproof and smudge-proof",
+            "Lasts 2-3 years"
+        ],
+        image: "Eyeliner Image",
+        reverse: true
+    },
+    {
+        title: "Lip Blushing",
+        price: "Starting at $500",
+        description: "Enhance your lips with a natural tint that defines, adds color, and creates the illusion of fuller lips. Perfect for those wanting a subtle, everyday look.",
+        features: [
+            "Natural-looking color enhancement",
+            "Custom color matching",
+            "Corrects asymmetry",
+            "Lasts 2-3 years"
+        ],
+        image: "Lip Blushing Image",
+        reverse: false
+    },
+    {
+        title: "Powder Brows",
+        price: "Starting at $475",
+        description: "Achieve soft, powdery eyebrows that look like they're filled in with makeup. This technique creates a fuller, more defined look than microblading.",
+        features: [
+            "Soft, makeup-like finish",
+            "Perfect for oily skin",
+            "Less invasive than microblading",
+            "Lasts 18-24 months"
+        ],
+        image: "Powder Brows Image",
+        reverse: true
+    },
+    {
+        title: "Beauty Mark",
+        price: "Starting at $150",
+        description: "Add a touch of classic elegance with a perfectly placed permanent beauty mark. Choose your favorite location for a timeless accent.",
+        features: [
+            "Custom placement",
+            "Natural appearance",
+            "Quick procedure",
+            "Long-lasting results"
+        ],
+        image: "Beauty Mark Image",
+        reverse: false
+    },
+    {
+        title: "Scar Camouflage",
+        price: "Consultation Required",
+        description: "Minimize the appearance of scars with our specialized pigmentation technique. Great for surgical scars, stretch marks, and other skin imperfections.",
+        features: [
+            "Custom color matching",
+            "Blends with natural skin tone",
+            "Works on various scar types",
+            "Significant improvement in appearance"
+        ],
+        image: "Scar Camouflage Image",
+        reverse: true
+    }
+];
+
+const processSteps = [
+    {
+        number: 1,
+        title: "Consultation",
+        description: "We discuss your goals, assess your features, and design the perfect look for you."
+    },
+    {
+        number: 2,
+        title: "Design & Approval",
+        description: "We create and refine the design until you're completely satisfied."
+    },
+    {
+        number: 3,
+        title: "Application",
+        description: "Using premium products and techniques, we carefully apply your permanent makeup."
+    },
+    {
+        number: 4,
+        title: "Follow-Up",
+        description: "Touch-up session to ensure perfect results and answer any questions."
+    }
+];
+---
+
+<Layout>
+    <PageHeader 
+        title="Our Services" 
+        subtitle="Professional Permanent Makeup & Cosmetic Treatments" 
+    />
+
+    <section class="services-detailed">
+        <div class="container">
+            {services.map((service) => (
+                <div class={`service-detail ${service.reverse ? 'reverse' : ''}`}>
+                    <div class="service-detail-content">
+                        <h2>{service.title}</h2>
+                        <p class="service-price">{service.price}</p>
+                        <p>{service.description}</p>
+                        <ul class="service-features">
+                            {service.features.map((feature) => (
+                                <li>✓ {feature}</li>
+                            ))}
+                        </ul>
+                        <a href="/contact" class="btn btn-primary">
+                            {service.price.includes('Consultation') ? 'Contact Us' : 'Learn More'}
+                        </a>
+                    </div>
+                    <div class="service-detail-image">
+                        <div class="placeholder-image">{service.image}</div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                {processSteps.map((step) => (
+                    <div class="process-step">
+                        <div class="step-number">{step.number}</div>
+                        <h3>{step.title}</h3>
+                        <p>{step.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Not Sure Which Service is Right for You?</h2>
+            <p>Contact us and let our experts guide you to the perfect treatment.</p>
+            <a href="/contact" class="btn btn-primary">Get In Touch</a>
+        </div>
+    </section>
+</Layout>
+
+<style>
+   /* ===================================
+   Services Section
+   =================================== */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .service-card {
+        background-color: var(--color-accent);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        border: 2px solid var(--color-border);
+        transition: all var(--transition-speed);
+    }
+
+    .service-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    .service-card h3 {
+        color: var(--color-secondary);
+        margin-bottom: 1rem;
+    }
+
+    .service-card p {
+        color: var(--color-text-light);
+        margin-bottom: 1.5rem;
+    }
+
+    .link-arrow {
+        color: var(--color-primary);
+        font-weight: 600;
+        transition: transform var(--transition-speed);
+        display: inline-block;
+    }
+
+    .link-arrow:hover {
+        transform: translateX(5px);
+    }
+
+    /* ===================================
+       Responsive Design
+       =================================== */
+    @media (max-width: 768px) {
+        .service-detail,
+        .service-detail.reverse {
+            grid-template-columns: 1fr;
+            direction: ltr;
+            padding: 1.5rem;
+            gap: 2rem;
+        }
+
+        .service-detail-image {
+            order: -1;
+            min-height: 250px;
+        }
+
+        .services-detailed {
+            padding: 2rem 1rem;
+        }
+
+        .service-detail {
+            margin-bottom: 2rem;
+        }
+
+        .process-steps {
+            grid-template-columns: 1fr;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+</style>

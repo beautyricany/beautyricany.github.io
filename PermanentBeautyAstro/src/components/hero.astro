@@ -1,0 +1,82 @@
+<section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to Permanent Beauty</h1>
+                <p class="hero-subtitle">Your trusted partner in professional permanent makeup and beauty enhancement</p>
+                <div class="hero-buttons">
+                    <a href="/services" class="btn btn-primary">Our Services</a>
+                    <a href="/contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+</section>
+
+<style>
+    /* ===================================
+   Hero Section
+   =================================== */
+    .hero {
+        background: linear-gradient(135deg, var(--color-secondary) 0%, #2A2A2A 100%);
+        color: var(--color-accent);
+        padding: 8rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--color-primary) 0%, transparent 70%);
+        opacity: 0.1;
+    }
+
+    .hero-content {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1s ease;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    .hero .btn-secondary {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .hero .btn-secondary:hover {
+        background-color: var(--color-accent);
+        color: var(--color-secondary);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
