@@ -7,19 +7,20 @@ function createSlug(name: string): string {
 }
 ---
 
-<aside class="sidebar">
-    <nav class="sidebar-nav">
-        <h3 class="sidebar-title">Our Services</h3>
-        <ul class="service-groups-nav">
+<aside class="sidebar card shadow-sm">
+    <nav class="sidebar-nav p-3 pe-lg-10 ps-lg-4 py-lg-4">
+        <h3 class="sidebar-title fs-5 mb-3 pb-3 border-bottom">Our Services</h3>
+        <ul class="list-unstyled mb-0">
             {serviceGroups.map((group) => (
-                <li class="service-group-item">
-                    <a href={`/services/${createSlug(group.name)}`} class="group-link">
+                <li class="mb-2">
+                    <a href={`/services/${createSlug(group.name)}`} class="group-link d-block px-3 py-2 rounded fw-semibold text-decoration-none">
                         {group.name}
                     </a>
-                    <ul class="services-submenu">
+                    <ul class="services-submenu list-unstyled ps-3 mb-0">
                         {group.services.map((service) => (
-                            <li class="service-item">
-                                <a href={`/services/${createSlug(group.name)}#${createSlug(service.title)}`}>
+                            <li>
+                                <a href={`/services/${createSlug(group.name)}#${createSlug(service.title)}`} 
+                                   class="service-link d-block px-3 py-2 rounded text-decoration-none">
                                     {service.title}
                                 </a>
                             </li>
@@ -38,41 +39,16 @@ function createSlug(name: string): string {
     .sidebar {
         position: sticky;
         top: 80px;
-        width: 280px;
-        background-color: var(--color-accent);
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow);
-        padding: 2rem 1.5rem;
         max-height: calc(100vh - 100px);
         overflow-y: auto;
     }
 
     .sidebar-title {
         color: var(--color-primary);
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid var(--color-border);
-    }
-
-    .service-groups-nav {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .service-group-item {
-        margin-bottom: 0.5rem;
-        position: relative;
     }
 
     .group-link {
-        display: block;
-        padding: 0.75rem 1rem;
         color: var(--color-secondary);
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 6px;
         transition: all var(--transition-speed);
         background-color: transparent;
     }
@@ -85,43 +61,31 @@ function createSlug(name: string): string {
 
     /* Submenu styles */
     .services-submenu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
         transition: all 0.3s ease;
-        padding-left: 1rem;
     }
 
-    .service-group-item:hover .services-submenu {
+    li:hover > .services-submenu {
         max-height: 500px;
         opacity: 1;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
 
-    .service-item {
-        margin: 0;
-    }
-
-    .service-item a {
-        display: block;
-        padding: 0.5rem 1rem;
+    .service-link {
         color: var(--color-text-light);
-        text-decoration: none;
         font-size: 0.95rem;
-        border-radius: 4px;
         transition: all var(--transition-speed);
         border-left: 2px solid transparent;
     }
 
-    .service-item a:hover {
+    .service-link:hover {
         color: var(--color-primary);
         background-color: var(--color-bg-light);
         border-left-color: var(--color-primary);
-        padding-left: 1.2rem;
+        padding-left: 1rem !important;
     }
 
     /* Active state */
@@ -130,7 +94,7 @@ function createSlug(name: string): string {
         color: var(--color-accent);
     }
 
-    .service-item a.active {
+    .service-link.active {
         color: var(--color-primary);
         background-color: var(--color-bg-light);
         border-left-color: var(--color-primary);
@@ -154,46 +118,5 @@ function createSlug(name: string): string {
 
     .sidebar::-webkit-scrollbar-thumb:hover {
         background: var(--color-text-light);
-    }
-
-    /* ===================================
-       Responsive Design
-       =================================== */
-    @media (max-width: 1024px) {
-        .sidebar {
-            width: 240px;
-            padding: 1.5rem 1rem;
-        }
-
-        .sidebar-title {
-            font-size: 1.3rem;
-        }
-
-        .group-link {
-            padding: 0.6rem 0.8rem;
-            font-size: 0.95rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .sidebar {
-            position: relative;
-            top: 0;
-            width: 100%;
-            max-height: none;
-            margin-bottom: 2rem;
-        }
-
-        /* On mobile, show all submenus by default */
-        .services-submenu {
-            max-height: none;
-            opacity: 1;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-group-item {
-            margin-bottom: 1rem;
-        }
     }
 </style>

@@ -1,16 +1,18 @@
 ---
 import Sidebar from './sidebar.astro';
+
+// TODO: fix width of the sidebar on large screen and space between a side bar and page slot with someone visually adept 
 ---
 
 <div class="container-fluid px-lg-2">
-    <div class="row gx-0 gy-2 py-4">
+    <div class="row gx-2 gy-2 py-4">
         <!-- Sidebar: hidden on mobile (d-none d-lg-block), visible on large screens -->
-        <aside class="col-lg-3 d-sm-block px-lg-2">
+        <aside class="col-lg-3 d-none d-lg-block px-lg-2">
             <Sidebar />
         </aside>
         
         <!-- Main Content: full width on mobile, 9 columns on large screens -->
-        <main class="col-12 col-lg-9">
+        <main class="col-12 col-lg-9 ps-lg-4">
             <slot />
         </main>
     </div>
