@@ -8,8 +8,10 @@ function createSlug(name: string): string {
 ---
 
 <aside class="sidebar card shadow-sm">
-    <nav class="sidebar-nav p-3 pe-lg-10 ps-lg-4 py-lg-4">
-        <h3 class="sidebar-title fs-5 mb-3 pb-3 border-bottom">Our Services</h3>
+    <nav class="sidebar-nav p-3 pe-lg-2 ps-lg-4 py-lg-4">
+        <a href="/services" class="sidebar-title-link text-decoration-none">
+            <h3 class="sidebar-title fs-5 mb-3 pb-3 border-bottom">Our Services</h3>
+        </a>
         <ul class="list-unstyled mb-0">
             {serviceGroups.map((group) => (
                 <li class="mb-2">
@@ -43,8 +45,18 @@ function createSlug(name: string): string {
         overflow-y: auto;
     }
 
+    .sidebar-title-link {
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .sidebar-title-link:hover {
+        opacity: 0.8;
+    }
+
     .sidebar-title {
         color: var(--color-primary);
+        margin-bottom: 1rem;
     }
 
     .group-link {

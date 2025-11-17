@@ -12,21 +12,23 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
 ---
 
 <div class="service-group-tile mb-4">
-    <div class="service-group-header mb-4">
+    <div class="service-group-header mb-4 d-flex justify-content-between align-items-center">
+        <div class="flex-grow-1">
+            <a href={`/services/${collapseId}`} class="service-group-link">
+                <h2 class="section-title service-group-name mb-2">{serviceGroup.name}</h2>
+            </a>
+            {serviceGroup.shortDescription && (
+                <p class="service-group-description text-muted mb-0">{serviceGroup.shortDescription}</p>
+            )}
+        </div>
         <button 
-            class="collapse-toggle w-100 text-start d-flex justify-content-between align-items-center"
+            class="collapse-toggle-btn btn"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target={`#${collapseId}`}
             aria-expanded="true"
             aria-controls={collapseId}
         >
-            <div>
-                <h2 class="section-title service-group-name mb-2">{serviceGroup.name}</h2>
-                {serviceGroup.shortDescription && (
-                    <p class="service-group-description text-muted mb-0">{serviceGroup.shortDescription}</p>
-                )}
-            </div>
             <span class="toggle-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
@@ -60,8 +62,17 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
         text-align: left;
     }
 
+    .service-group-link {
+        text-decoration: none;
+        display: block;
+    }
+
     .service-group-name {
         text-align: left;
+        color: var(--color-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
     }
 
     .service-group-name::after {
@@ -69,35 +80,35 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
         margin-right: auto;
     }
 
-    .collapse-toggle {
+    .service-group-link:hover .service-group-name {
+        color: var(--color-primary);
+    }
+
+    .collapse-toggle-btn {
         background: none;
         border: none;
-        padding: 0;
+        padding: 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease;
+        min-width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .collapse-toggle:hover {
-        opacity: 0.8;
+    .collapse-toggle-btn:hover {
+        background-color: var(--color-bg-light);
+        border-radius: 50%;
     }
 
-    .collapse-toggle:focus {
+    .collapse-toggle-btn:focus {
         outline: none;
+        box-shadow: none;
     }
 
-    .collapse-toggle:focus-visible {
+    .collapse-toggle-btn:focus-visible {
         outline: none;
-    }
-
-    .service-group-name {
-        color: var(--color-secondary);
-        font-size: 2rem;
-        font-weight: 600;
-        transition: color 0.3s ease;
-    }
-
-    .collapse-toggle:hover .service-group-name {
-        color: var(--color-primary);
     }
 
     .service-group-description {
@@ -110,14 +121,13 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
         color: var(--color-primary);
         transition: transform 0.3s ease;
         flex-shrink: 0;
-        margin-left: 1rem;
     }
 
-    .collapse-toggle[aria-expanded="false"] .toggle-icon {
+    .collapse-toggle-btn[aria-expanded="false"] .toggle-icon {
         transform: rotate(-90deg);
     }
 
-    .collapse-toggle[aria-expanded="true"] .toggle-icon {
+    .collapse-toggle-btn[aria-expanded="true"] .toggle-icon {
         transform: rotate(0deg);
     }
 
