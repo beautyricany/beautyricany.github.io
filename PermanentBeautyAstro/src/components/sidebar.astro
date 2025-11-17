@@ -1,0 +1,199 @@
+---
+import serviceGroups from '../data/services';
+
+// Create URL-friendly slugs from service group names
+function createSlug(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '-');
+}
+---
+
+<aside class="sidebar">
+    <nav class="sidebar-nav">
+        <h3 class="sidebar-title">Our Services</h3>
+        <ul class="service-groups-nav">
+            {serviceGroups.map((group) => (
+                <li class="service-group-item">
+                    <a href={`/services/${createSlug(group.name)}`} class="group-link">
+                        {group.name}
+                    </a>
+                    <ul class="services-submenu">
+                        {group.services.map((service) => (
+                            <li class="service-item">
+                                <a href={`/services/${createSlug(group.name)}#${createSlug(service.title)}`}>
+                                    {service.title}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            ))}
+        </ul>
+    </nav>
+</aside>
+
+<style>
+    /* ===================================
+       Sidebar Component
+       =================================== */
+    .sidebar {
+        position: sticky;
+        top: 80px;
+        width: 280px;
+        background-color: var(--color-accent);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 2rem 1.5rem;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .sidebar-title {
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--color-border);
+    }
+
+    .service-groups-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .service-group-item {
+        margin-bottom: 0.5rem;
+        position: relative;
+    }
+
+    .group-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--color-secondary);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: all var(--transition-speed);
+        background-color: transparent;
+    }
+
+    .group-link:hover {
+        background-color: var(--color-bg-light);
+        color: var(--color-primary);
+        transform: translateX(5px);
+    }
+
+    /* Submenu styles */
+    .services-submenu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease;
+        padding-left: 1rem;
+    }
+
+    .service-group-item:hover .services-submenu {
+        max-height: 500px;
+        opacity: 1;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .service-item {
+        margin: 0;
+    }
+
+    .service-item a {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: var(--color-text-light);
+        text-decoration: none;
+        font-size: 0.95rem;
+        border-radius: 4px;
+        transition: all var(--transition-speed);
+        border-left: 2px solid transparent;
+    }
+
+    .service-item a:hover {
+        color: var(--color-primary);
+        background-color: var(--color-bg-light);
+        border-left-color: var(--color-primary);
+        padding-left: 1.2rem;
+    }
+
+    /* Active state */
+    .group-link.active {
+        background-color: var(--color-primary);
+        color: var(--color-accent);
+    }
+
+    .service-item a.active {
+        color: var(--color-primary);
+        background-color: var(--color-bg-light);
+        border-left-color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    /* Scrollbar styling */
+    .sidebar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+        background: var(--color-bg-light);
+        border-radius: 3px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 3px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb:hover {
+        background: var(--color-text-light);
+    }
+
+    /* ===================================
+       Responsive Design
+       =================================== */
+    @media (max-width: 1024px) {
+        .sidebar {
+            width: 240px;
+            padding: 1.5rem 1rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.3rem;
+        }
+
+        .group-link {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .sidebar {
+            position: relative;
+            top: 0;
+            width: 100%;
+            max-height: none;
+            margin-bottom: 2rem;
+        }
+
+        /* On mobile, show all submenus by default */
+        .services-submenu {
+            max-height: none;
+            opacity: 1;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-group-item {
+            margin-bottom: 1rem;
+        }
+    }
+</style>

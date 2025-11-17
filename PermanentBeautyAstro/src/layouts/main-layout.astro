@@ -9,8 +9,11 @@ import Footer from '../components/footer.astro';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Permanent Beauty</title>
 	</head>
 	<body>
 		<Header />
@@ -21,6 +24,19 @@ import Footer from '../components/footer.astro';
 
 <style is:global>
 	/* ===================================
+   Custom Font - Dear Joe 4
+   =================================== */
+@font-face {
+    font-family: 'Dear Joe 4';
+    src: url('/fonts/dear_joe_four/dJ4TRIAL.woff2') format('woff2'),
+         url('/fonts/dear_joe_four/dJ4TRIAL.woff') format('woff'),
+         url('/fonts/dear_joe_four/dJ4TRIAL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===================================
    CSS Variables - Color Theme
    =================================== */
 :root {
@@ -34,7 +50,7 @@ import Footer from '../components/footer.astro';
     --color-hover: #A01828;         /* Darker red for hover */
     
     --font-primary: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    --font-heading: 'Georgia', serif;
+    --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     
     --transition-speed: 0.3s;
     --border-radius: 8px;
@@ -84,9 +100,10 @@ ul {
    =================================== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 600;
-    line-height: 1.2;
+    font-weight: 500;
+    line-height: 1.3;
     margin-bottom: 1rem;
+    letter-spacing: 0.02em;
 }
 
 h1 {
