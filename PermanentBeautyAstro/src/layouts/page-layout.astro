@@ -1,56 +1,14 @@
 ---
 import MainLayout from "./main-layout.astro";
 import PageHero from "../components/page-hero.astro";
-import Sidebar from "../components/sidebar.astro";
+import PageContent from "../components/page-content.astro";
 
-const { title, subtitle, showSidebar = false } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
 
 <MainLayout>
     <PageHero title={title} subtitle={subtitle} />
-    {showSidebar ? (
-        <div class="page-with-sidebar">
-            <Sidebar />
-            <div class="main-content">
-                <slot />
-            </div>
-        </div>
-    ) : (
+    <PageContent>
         <slot />
-    )}
+    </PageContent>
 </MainLayout>
-
-<style>
-    /* ===================================
-       Page Layout with Sidebar
-       =================================== */
-    .page-with-sidebar {
-        display: flex;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-        align-items: flex-start;
-    }
-
-    .main-content {
-        flex: 1;
-        min-width: 0; /* Prevents flex item from overflowing */
-    }
-
-    /* ===================================
-       Responsive Design
-       =================================== */
-    @media (max-width: 1024px) {
-        .page-with-sidebar {
-            gap: 1.5rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .page-with-sidebar {
-            flex-direction: column;
-            padding: 1rem;
-        }
-    }
-</style>

@@ -1,0 +1,25 @@
+---
+import Sidebar from './sidebar.astro';
+---
+
+<div class="container-fluid px-lg-4">
+    <div class="row g-4 py-4">
+        <!-- Sidebar: hidden on mobile (d-none d-lg-block), visible on large screens -->
+        <aside class="col-lg-3 d-none d-lg-block">
+            <Sidebar />
+        </aside>
+        
+        <!-- Main Content: full width on mobile, 9 columns on large screens -->
+        <main class="col-12 col-lg-9">
+            <slot />
+        </main>
+    </div>
+</div>
+
+<style>
+    /* Additional custom styles if needed */
+    .row {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+</style>

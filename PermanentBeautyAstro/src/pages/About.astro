@@ -1,12 +1,14 @@
 ---
-import Hero from '../components/about-hero.astro';
+import AboutHero from '../components/about-hero.astro';
+import PageContent from '../components/page-content.astro';
 
 // About section content - to be included in index page
 ---
 
-<Hero />
+<AboutHero />
 
-        <section class="about-intro">
+<PageContent>
+    <section class="about-intro">
             <div class="container">
                 <div class="about-grid">
                     <div class="about-text">
@@ -94,13 +96,14 @@ import Hero from '../components/about-hero.astro';
             </div>
         </section>
 
-        <section class="cta">
-            <div class="container">
-                <h2>Ready to Experience the Difference?</h2>
-                <p>Contact us to learn more about how permanent beauty can simplify your routine.</p>
-                <a href="/contact" class="btn btn-primary">Get In Touch</a>
-            </div>
-        </section>
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Experience the Difference?</h2>
+            <p>Contact us to learn more about how permanent beauty can simplify your routine.</p>
+            <a href="/contact" class="btn btn-primary">Get In Touch</a>
+        </div>
+    </section>
+</PageContent>
 
 <style>
     /* ===================================
