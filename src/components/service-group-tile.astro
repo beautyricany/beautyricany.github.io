@@ -41,7 +41,7 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
         <div class="row g-4">
             {serviceGroup.services.map((service) => (
                 <div class="col-12 col-md-6">
-                    <ServiceTile service={service} />
+                    <ServiceTile service={service} groupSlug={collapseId} />
                 </div>
             ))}
         </div>

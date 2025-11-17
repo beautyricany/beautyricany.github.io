@@ -3,39 +3,50 @@ import type { Service } from '../data/services';
 
 interface Props {
     service: Service;
+    groupSlug?: string;
 }
 
-const { service } = Astro.props;
+const { service, groupSlug } = Astro.props;
+const serviceSlug = service.title.toLowerCase().replace(/\s+/g, '-');
+const serviceUrl = groupSlug ? `/services/${groupSlug}#${serviceSlug}` : '#';
 ---
 
-<div class="service-tile card h-100">
-    <div class="service-tile-image">
-        {service.images && service.images.length > 0 ? (
-            <img src={service.images[0]} alt={service.title} class="card-img-top" />
-        ) : (
-            <div class="placeholder-image">
-                {service.title}
+<a href={serviceUrl} class="service-tile-link text-decoration-none">
+    <div class="service-tile card h-100">
+        <div class="service-tile-image">
+            {service.images && service.images.length > 0 ? (
+                <img src={service.images[0]} alt={service.title} class="card-img-top" />
+            ) : (
+                <div class="placeholder-image">
+                    {service.title}
+                </div>
+            )}
+        </div>
+        <div class="card-body d-flex flex-column">
+            <h3 class="card-title h5 mb-3">{service.title}</h3>
+            {service.shortDescription && (
+                <p class="card-text text-muted mb-3">{service.shortDescription}</p>
+            )}
+            <div class="mt-auto">
+                <span class="btn btn-outline-primary btn-sm w-100">Learn More</span>
             </div>
-        )}
-    </div>
-    <div class="card-body d-flex flex-column">
-        <h3 class="card-title h5 mb-3">{service.title}</h3>
-        {service.shortDescription && (
-            <p class="card-text text-muted mb-3">{service.shortDescription}</p>
-        )}
-        <div class="mt-auto">
-            <a href="#" class="btn btn-outline-primary btn-sm w-100">Learn More</a>
         </div>
     </div>
-</div>
+</a>
 
 <style>
+    .service-tile-link {
+        display: block;
+        height: 100%;
+    }
+
     .service-tile {
         transition: all var(--transition-speed);
         border: 1px solid var(--color-border);
+        height: 100%;
     }
 
-    .service-tile:hover {
+    .service-tile-link:hover .service-tile {
         transform: translateY(-5px);
         box-shadow: var(--box-shadow-hover);
         border-color: var(--color-primary);
