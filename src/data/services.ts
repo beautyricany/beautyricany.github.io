@@ -152,7 +152,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Lip blushing is ideal for correcting asymmetry, defining lip borders, and adding a youthful flush of color. The semi-permanent pigment fades gracefully over 2-3 years, maintaining a soft, natural appearance throughout. Wake up with perfectly tinted lips every day!"
                     }
                 ],
-                images: ["lip-blushing-1.jpg", "lip-blushing-2.jpg"]
+                images: ["lip-blushing-1.jpg", "lip-blushing-2.jpg", "lip-blushing-3.jpg", "lip-blushing-4.jpg"]
             }
         ]
     },
