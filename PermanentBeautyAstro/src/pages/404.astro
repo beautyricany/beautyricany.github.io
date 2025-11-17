@@ -1,0 +1,168 @@
+---
+import MainLayout from '../layouts/main-layout.astro';
+import PageContent from '../components/page-content.astro';
+---
+
+<MainLayout>
+    <section class="hero-404 py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="hero-content text-center py-5">
+                        <h1 class="display-1 mb-4">404</h1>
+                        <h2 class="mb-4">Page Not Found</h2>
+                        <p class="lead mb-5">Oops! The page you're looking for doesn't exist. It might have been moved or deleted.</p>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="/" class="btn btn-primary px-4">Go Home</a>
+                            <a href="/services" class="btn btn-outline-dark px-4">View Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <PageContent>
+        <section class="helpful-links py-4">
+            <div class="container">
+                <h3 class="text-center mb-4">You might be looking for:</h3>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="link-card p-4 h-100">
+                            <h4>Our Services</h4>
+                            <p class="mb-3">Explore our permanent makeup and beauty enhancement services.</p>
+                            <a href="/services" class="text-decoration-none">View Services →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="link-card p-4 h-100">
+                            <h4>Price List</h4>
+                            <p class="mb-3">Check out our pricing for all treatments and packages.</p>
+                            <a href="/price-list" class="text-decoration-none">View Prices →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="link-card p-4 h-100">
+                            <h4>About Us</h4>
+                            <p class="mb-3">Learn more about our studio and approach.</p>
+                            <a href="/" class="text-decoration-none">About Us →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="link-card p-4 h-100">
+                            <h4>Contact</h4>
+                            <p class="mb-3">Get in touch with us for questions or appointments.</p>
+                            <a href="/contact" class="text-decoration-none">Contact Us →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </PageContent>
+</MainLayout>
+
+<style>
+    .hero-404 {
+        background: linear-gradient(135deg, var(--color-secondary) 0%, #2A2A2A 100%);
+        color: var(--color-accent);
+        position: relative;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-404::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--color-primary) 0%, transparent 70%);
+        opacity: 0.1;
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-404 .display-1 {
+        font-size: 8rem;
+        font-weight: bold;
+        color: var(--color-primary);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-404 h2 {
+        color: var(--color-accent);
+        font-size: 2.5rem;
+    }
+
+    .hero-404 .lead {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.25rem;
+    }
+
+    .hero-404 .btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .hero-404 .btn-primary:hover {
+        background-color: var(--color-hover);
+        border-color: var(--color-hover);
+    }
+
+    .hero-404 .btn-outline-dark {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .hero-404 .btn-outline-dark:hover {
+        background-color: var(--color-accent);
+        color: var(--color-secondary);
+    }
+
+    .link-card {
+        background-color: var(--color-accent);
+        border-radius: var(--border-radius);
+        border: 2px solid var(--color-border);
+        transition: all var(--transition-speed);
+    }
+
+    .link-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: var(--box-shadow-hover);
+        transform: translateY(-3px);
+    }
+
+    .link-card h4 {
+        color: var(--color-secondary);
+        margin-bottom: 0.75rem;
+    }
+
+    .link-card p {
+        color: var(--color-text-light);
+    }
+
+    .link-card a {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .link-card a:hover {
+        color: var(--color-hover);
+    }
+
+    @media (max-width: 768px) {
+        .hero-404 .display-1 {
+            font-size: 5rem;
+        }
+
+        .hero-404 h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
