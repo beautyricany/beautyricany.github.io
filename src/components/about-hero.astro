@@ -1,0 +1,104 @@
+<section class="hero py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="hero-content text-center py-5">
+                    <h1 class="hero-title display-2 mb-4">Welcome to Permanent Beauty</h1>
+                    <p class="hero-subtitle lead fs-4 mb-5">Your trusted partner in professional permanent makeup and beauty enhancement</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="/services" class="btn btn-primary px-4">Our Services</a>
+                        <a href="/contact" class="btn btn-outline-light px-4">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ===================================
+   Hero Section
+   =================================== */
+    .hero {
+        background: linear-gradient(135deg, var(--color-secondary) 0%, #2A2A2A 100%);
+        color: var(--color-accent);
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--color-primary) 0%, transparent 70%);
+        opacity: 0.1;
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease;
+    }
+
+    .hero-title {
+        font-family: 'Dear Joe 4', cursive !important;
+        font-size: 3rem !important;
+        color: var(--color-accent);
+        animation: fadeInUp 1s ease;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+        color: rgba(255, 255, 255, 0.9);
+        animation: fadeInUp 1s ease 0.2s backwards;
+    }
+
+    .hero .btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    .hero .btn-primary:hover {
+        background-color: var(--color-hover);
+        border-color: var(--color-hover);
+    }
+
+    .hero .btn-outline-light {
+        animation: fadeInUp 1s ease 0.4s backwards;
+    }
+
+    .hero .btn-outline-light:hover {
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-secondary);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive font sizes */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem !important;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem !important;
+        }
+    }
+</style>

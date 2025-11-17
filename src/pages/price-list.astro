@@ -1,0 +1,391 @@
+---
+import PageLayout from '../layouts/page-layout.astro';
+
+const pricingCategories = [
+    {
+        title: "Eyebrow Services",
+        items: [
+            { service: "Microblading", description: "Natural hair-like strokes", price: "$450", featured: true },
+            { service: "Powder Brows", description: "Soft, makeup-like finish", price: "$475", featured: true },
+            { service: "Combination Brows", description: "Microblading + powder shading", price: "$525" },
+            { service: "Brow Touch-Up (6-12 months)", description: "Refresh and maintain", price: "$200" },
+            { service: "Brow Touch-Up (12+ months)", description: "Extended maintenance", price: "$275" }
+        ]
+    },
+    {
+        title: "Eyeliner Services",
+        items: [
+            { service: "Top Eyeliner", description: "Upper lash line definition", price: "$375" },
+            { service: "Bottom Eyeliner", description: "Lower lash line definition", price: "$300" },
+            { service: "Top & Bottom Eyeliner", description: "Complete eye definition", price: "$600" },
+            { service: "Winged Eyeliner", description: "Classic cat-eye look", price: "$425" },
+            { service: "Eyeliner Touch-Up", description: "Maintain your look", price: "$175" }
+        ]
+    },
+    {
+        title: "Lip Services",
+        items: [
+            { service: "Lip Blushing", description: "Natural color enhancement", price: "$500", featured: true },
+            { service: "Full Lip Color", description: "Bold, defined lips", price: "$550" },
+            { service: "Lip Neutralization", description: "Correct dark or uneven lips", price: "$600" },
+            { service: "Lip Touch-Up", description: "Refresh and perfect", price: "$225" }
+        ]
+    },
+    {
+        title: "Special Services",
+        items: [
+            { service: "Beauty Mark", description: "Add a signature beauty spot", price: "$150" },
+            { service: "Scar Camouflage", description: "Consultation required", price: "Custom pricing" },
+            { service: "Color Correction", description: "Fix previous work", price: "$350+" },
+            { service: "Removal Session", description: "Lighten unwanted PMU", price: "$200 per session" }
+        ]
+    }
+];
+
+const packageDeals = [
+    { name: "Full Face Package", description: "Brows + Eyeliner + Lips", price: "$1,250", savings: "Save $200" },
+    { name: "Eyes & Brows", description: "Top eyeliner + Brows", price: "$725", savings: "Save $100" },
+    { name: "Bridal Package", description: "Any 2 services", price: "15% off", savings: "Perfect timing for your big day" }
+];
+---
+
+<PageLayout title="Price List" subtitle="Transparent pricing for all our services">
+    
+    <!-- Pricing Notice Section -->
+    <section class="pricing-intro">
+        <div class="container">
+            <div class="pricing-notice">
+                <h3>💎 Investment in Your Beauty</h3>
+                <p>All prices include a complimentary consultation and a touch-up session within 6-8 weeks. We use only premium, hypoallergenic pigments and maintain the highest safety standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tables -->
+    <section class="pricing-tables">
+        <div class="container">
+            {pricingCategories.map(category => (
+                <div class="pricing-category">
+                    <h2 class="pricing-title">{category.title}</h2>
+                    <div class="price-table">
+                        {category.items.map(item => (
+                            <div class={`price-row ${item.featured ? 'featured' : ''}`}>
+                                <div class="price-service">
+                                    <h3>{item.service}</h3>
+                                    <p>{item.description}</p>
+                                </div>
+                                <div class="price-amount">{item.price}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+
+            <!-- Package Deals -->
+            <div class="pricing-category">
+                <h2 class="pricing-title">💝 Package Deals</h2>
+                <div class="price-table">
+                    {packageDeals.map(pkg => (
+                        <div class="price-row highlight">
+                            <div class="price-service">
+                                <h3>{pkg.name}</h3>
+                                <p>{pkg.description} • <strong>{pkg.savings}</strong></p>
+                            </div>
+                            <div class="price-amount">{pkg.price}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Information -->
+    <section class="pricing-info">
+        <div class="container">
+            <h2 class="section-title">Important Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>💳 Payment Options</h3>
+                    <ul>
+                        <li>Cash and all major credit cards accepted</li>
+                        <li>Flexible payment plans available</li>
+                        <li>HSA/FSA cards accepted</li>
+                        <li>Gift certificates available</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>📅 What's Included</h3>
+                    <ul>
+                        <li>Complimentary consultation</li>
+                        <li>Custom color matching</li>
+                        <li>Numbing cream included</li>
+                        <li>Touch-up session (6-8 weeks)</li>
+                        <li>Aftercare kit provided</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Time Investment</h3>
+                    <ul>
+                        <li>Initial appointment: 2-3 hours</li>
+                        <li>Touch-up session: 1-2 hours</li>
+                        <li>Healing period: 7-14 days</li>
+                        <li>Full results: 4-6 weeks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Book your complimentary consultation today and let's discuss which services are perfect for you.</p>
+            <a href="/contact" class="btn btn-primary">Schedule Consultation</a>
+        </div>
+    </section>
+
+</PageLayout>
+
+<style>
+    /* ===================================
+       Pricing Intro
+       =================================== */
+    .pricing-intro {
+        background-color: var(--color-bg-light);
+        padding: 3rem 0;
+    }
+
+    .pricing-notice {
+        background-color: var(--color-accent);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        border-left: 5px solid var(--color-primary);
+        box-shadow: var(--box-shadow);
+    }
+
+    .pricing-notice h3 {
+        color: var(--color-secondary);
+        margin-bottom: 1rem;
+    }
+
+    .pricing-notice p {
+        color: var(--color-text-light);
+        margin-bottom: 0;
+        line-height: 1.7;
+    }
+
+    /* ===================================
+       Pricing Tables
+       =================================== */
+    .pricing-tables {
+        padding: 5rem 0;
+    }
+
+    .pricing-category {
+        margin-bottom: 4rem;
+    }
+
+    .pricing-title {
+        color: var(--color-secondary);
+        text-align: left;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        border-bottom: 3px solid var(--color-primary);
+        padding-bottom: 0.5rem;
+    }
+
+    .price-table {
+        background-color: var(--color-accent);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+    }
+
+    .price-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 2rem;
+        align-items: center;
+        padding: 2rem;
+        border-bottom: 1px solid var(--color-border);
+        transition: background-color var(--transition-speed);
+    }
+
+    .price-row:last-child {
+        border-bottom: none;
+    }
+
+    .price-row:hover {
+        background-color: var(--color-bg-light);
+    }
+
+    .price-row.highlight {
+        background-color: rgba(196, 30, 58, 0.05);
+    }
+
+    .price-row.featured {
+        background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(196, 30, 58, 0.05) 100%);
+        border-left: 4px solid var(--color-primary);
+    }
+
+    .price-service h3 {
+        color: var(--color-secondary);
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .price-service p {
+        color: var(--color-text-light);
+        margin-bottom: 0;
+        font-size: 0.95rem;
+    }
+
+    .price-amount {
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: var(--color-primary);
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    /* ===================================
+       Pricing Info Section
+       =================================== */
+    .pricing-info {
+        background-color: var(--color-bg-light);
+        padding: 5rem 0;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--color-secondary);
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--color-primary);
+        margin: 1rem auto;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .info-card {
+        background-color: var(--color-accent);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    }
+
+    .info-card h3 {
+        color: var(--color-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .info-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .info-card ul li {
+        padding: 0.75rem 0;
+        color: var(--color-text-light);
+        border-bottom: 1px solid var(--color-border);
+        line-height: 1.6;
+    }
+
+    .info-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .info-card ul li::before {
+        content: "✓ ";
+        color: var(--color-primary);
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+    /* ===================================
+       CTA Section
+       =================================== */
+    .cta {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-hover) 100%);
+        color: var(--color-accent);
+        text-align: center;
+        padding: 5rem 2rem;
+    }
+
+    .cta h2 {
+        color: var(--color-accent);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+    }
+
+    .cta .btn-primary {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+        border-color: var(--color-accent);
+    }
+
+    .cta .btn-primary:hover {
+        background-color: var(--color-secondary);
+        color: var(--color-accent);
+        border-color: var(--color-secondary);
+    }
+
+    /* ===================================
+       Responsive Design
+       =================================== */
+    @media (max-width: 768px) {
+        .price-row {
+            grid-template-columns: 1fr;
+            padding: 1.5rem;
+            gap: 1rem;
+        }
+
+        .price-amount {
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+        }
+
+        .pricing-intro,
+        .pricing-tables,
+        .pricing-info,
+        .cta {
+            padding: 3rem 0;
+        }
+    }
+</style>

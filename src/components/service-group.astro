@@ -1,0 +1,137 @@
+---
+import type { ServiceGroup } from '../data/services';
+import ServiceDetail from './service-detail.astro';
+
+interface Props {
+    serviceGroup: ServiceGroup;
+}
+
+const { serviceGroup } = Astro.props;
+---
+
+<section class="service-group-detail">
+    <div class="service-group-header mb-5">
+        <div class="service-group-descriptions">
+            {serviceGroup.description.map((desc) => (
+                <div class="description-block mb-4">
+                    {desc.title && desc.titleType === 'h2' && (
+                        <h2 class="section-title mb-3">{desc.title}</h2>
+                    )}
+                    {desc.title && desc.titleType === 'h3' && (
+                        <h3 class="mb-3">{desc.title}</h3>
+                    )}
+                    {desc.title && desc.titleType === 'h4' && (
+                        <h4 class="mb-3">{desc.title}</h4>
+                    )}
+                    {desc.title && desc.titleType === 'h5' && (
+                        <h5 class="mb-3">{desc.title}</h5>
+                    )}
+                    <p class="lead">{desc.text}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {serviceGroup.images && serviceGroup.images.length > 0 && (
+        <div class="service-group-images mb-5">
+            <div class="row g-3">
+                {serviceGroup.images.map((image) => (
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="image-wrapper">
+                            <img src={`/images/${image}`} alt={serviceGroup.name} class="img-fluid rounded shadow-sm" />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )}
+
+    <!-- Individual Services -->
+    <div class="services-list">
+        {serviceGroup.services.map((service) => (
+            <ServiceDetail service={service} />
+        ))}
+    </div>
+</section>
+
+<style>
+    .service-group-detail {
+        margin-bottom: 3rem;
+    }
+
+    .service-group-descriptions {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .description-block h2 {
+        color: var(--color-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .description-block h3 {
+        color: var(--color-secondary);
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+
+    .description-block h4 {
+        color: var(--color-secondary);
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .description-block h5 {
+        color: var(--color-secondary);
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .description-block p {
+        color: var(--color-text-dark);
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    .service-group-images {
+        margin-top: 3rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, var(--color-bg-light) 0%, #E0E0E0 100%);
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .image-wrapper:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .description-block h2 {
+            font-size: 1.5rem;
+        }
+
+        .description-block h3 {
+            font-size: 1.35rem;
+        }
+
+        .description-block p {
+            font-size: 1rem;
+        }
+    }
+</style>

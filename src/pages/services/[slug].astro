@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/page-layout.astro';
+import ServiceGroup from '../../components/service-group.astro';
+import serviceGroups from '../../data/services';
+
+// Generate static paths for all service groups
+export function getStaticPaths() {
+    return serviceGroups.map((group) => {
+        // Create URL-friendly slug from service group name
+        const slug = group.name.toLowerCase().replace(/\s+/g, '-');
+        
+        return {
+            params: { slug },
+            props: { serviceGroup: group }
+        };
+    });
+}
+
+const { serviceGroup } = Astro.props;
+const pageTitle = serviceGroup.name;
+const pageSubtitle = serviceGroup.shortDescription || 'Professional beauty services tailored to your needs';
+---
+
+<PageLayout title={pageTitle} subtitle={pageSubtitle}>
+    <ServiceGroup serviceGroup={serviceGroup} />
+</PageLayout>

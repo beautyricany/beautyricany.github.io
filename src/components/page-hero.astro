@@ -1,0 +1,50 @@
+---
+// PageHeader component - Reusable page header with gradient background
+interface Props {
+    title: string;
+    subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="page-header">
+    <div class="container">
+        <h1>{title}</h1>
+        {subtitle && <p>{subtitle}</p>}
+    </div>
+</section>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .page-header {
+        background: linear-gradient(135deg, var(--color-secondary) 0%, #2A2A2A 100%);
+        color: var(--color-accent);
+        padding: 5rem 2rem 4rem;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 2.7rem;
+        margin-bottom: 1rem;
+        color: var(--color-accent);
+        font-weight: 700;
+    }
+
+    .page-header p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        color: var(--color-text-light);
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 3rem 1rem;
+        }
+    }
+</style>

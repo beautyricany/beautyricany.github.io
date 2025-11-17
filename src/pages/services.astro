@@ -1,0 +1,174 @@
+---
+import PageLayout from '../layouts/page-layout.astro';
+import ServiceGroupTile from '../components/service-group-tile.astro';
+import serviceGroups from '../data/services';
+
+const processSteps = [
+    {
+        number: 1,
+        title: "Consultation",
+        description: "We discuss your goals, assess your features, and design the perfect look for you."
+    },
+    {
+        number: 2,
+        title: "Design & Approval",
+        description: "We create and refine the design until you're completely satisfied."
+    },
+    {
+        number: 3,
+        title: "Application",
+        description: "Using premium products and techniques, we carefully apply your permanent makeup."
+    },
+    {
+        number: 4,
+        title: "Follow-Up",
+        description: "Touch-up session to ensure perfect results and answer any questions."
+    }
+];
+---
+
+<PageLayout title="Our Services" subtitle="Professional Permanent Makeup & Cosmetic Treatments">
+    <section class="services-section py-4">
+        {serviceGroups.map((group) => (
+            <ServiceGroupTile serviceGroup={group} />
+        ))}
+    </section>
+
+    <section class="process">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                {processSteps.map((step) => (
+                    <div class="process-step">
+                        <div class="step-number">{step.number}</div>
+                        <h3>{step.title}</h3>
+                        <p>{step.description}</p>
+                    </div>
+                ))}
+            </div>
+    </section>
+
+    <section class="cta">
+        <h2>Not Sure Which Service is Right for You?</h2>
+        <p>Contact us and let our experts guide you to the perfect treatment.</p>
+        <a href="/contact" class="btn btn-primary">Get In Touch</a>
+    </section>
+</PageLayout>
+
+<style>
+    /* ===================================
+       Services Section
+       =================================== */
+    .services-section {
+        margin-bottom: 3rem;
+    }
+
+    /* ===================================
+       Process Section
+       =================================== */
+    .process {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--color-bg-light) 0%, #FFFFFF 100%);
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        text-align: center;
+        color: var(--color-secondary);
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .process-step {
+        text-align: center;
+        padding: 2rem;
+        background: var(--color-accent);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: transform 0.3s ease;
+    }
+
+    .process-step:hover {
+        transform: translateY(-5px);
+    }
+
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--color-primary);
+        color: var(--color-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0 auto 1.5rem;
+    }
+
+    .process-step h3 {
+        color: var(--color-secondary);
+        margin-bottom: 1rem;
+    }
+
+    .process-step p {
+        color: var(--color-text-dark);
+        line-height: 1.6;
+    }
+
+    /* ===================================
+       CTA Section
+       =================================== */
+    .cta {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, var(--color-primary) 0%, #A01828 100%);
+        color: var(--color-accent);
+        border-radius: var(--border-radius);
+    }
+
+    .cta h2 {
+        color: var(--color-accent);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* ===================================
+       Responsive Design
+       =================================== */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .process-steps {
+            grid-template-columns: 1fr;
+            padding: 0 1rem;
+        }
+
+        .cta {
+            padding: 3rem 1.5rem;
+        }
+
+        .cta h2 {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+</style>

@@ -1,0 +1,14 @@
+---
+import MainLayout from "./main-layout.astro";
+import PageHero from "../components/page-hero.astro";
+import PageContent from "../components/page-content.astro";
+
+const { title, subtitle } = Astro.props;
+---
+
+<MainLayout>
+    <PageHero title={title} subtitle={subtitle} />
+    <PageContent>
+        <slot />
+    </PageContent>
+</MainLayout>
