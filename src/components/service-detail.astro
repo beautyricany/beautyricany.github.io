@@ -12,10 +12,12 @@ const { service } = Astro.props;
 <article  id={service.title.toLowerCase().replace(/\s+/g, '-')}>
         <div class="card service-detail-background mb-4 mb-md-5">
             <div class="card-body p-3 p-md-4">
-                <div class="row">
-                    <div class="col-12">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
                         <!-- Header -->
                         <h3 class="service-title mb-2 mb-md-3">{service.title}</h3>
+                    </div>
+                    <div class="col-12 col-lg-6 text-lg-end">
                         <p class="service-price mb-3 mb-md-4">{formatPrice(service.price)}</p>
                     </div>
                 </div>
@@ -79,12 +81,29 @@ const { service } = Astro.props;
         font-size: 1.75rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        position: relative;
+        display: inline-block;
+    }
+
+    .service-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--color-primary);
+        margin-top: 0.5rem;
     }
 
     .service-price {
         color: var(--color-primary);
         font-weight: 600;
         font-size: 1.5rem;
+    }
+
+    @media (min-width: 992px) {
+        .service-price {
+            margin-bottom: 0 !important;
+        }
     }
 
     @media (max-width: 768px) {
