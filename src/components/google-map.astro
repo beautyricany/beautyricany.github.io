@@ -1,0 +1,34 @@
+---
+interface Props {
+    address: string;
+}
+
+const { address } = Astro.props;
+const encodedAddress = encodeURIComponent(address);
+---
+
+<div class="google-map-container">
+    <iframe
+        src={`https://www.google.com/maps?q=${encodedAddress}&output=embed`}
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Location Map"
+    ></iframe>
+</div>
+
+<style>
+    .google-map-container {
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .google-map-container iframe {
+        display: block;
+    }
+</style>

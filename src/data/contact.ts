@@ -11,7 +11,7 @@ export interface Contact {
 export const contact: Contact = {
     ownerName: "Eva Průšová",
     ownerIco: "12345678",
-    address: "Placeholder Street 123, 100 00 Prague, Czech Republic",
+    address: "Černokostelecká 245/67, 251 01 Říčany u Prahy",
     email: "info@permanentbeauty.cz",
     phone: "+420 123 456 789",
     facebook: "https://facebook.com/permanentbeauty",
