@@ -18,7 +18,7 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
                 <h2 class="section-title service-group-name mb-2">{serviceGroup.name}</h2>
             </a>
             {serviceGroup.shortDescription && (
-                <p class="description-muted mb-0">{serviceGroup.shortDescription}</p>
+                <p class="description-muted mb-0 text-start">{serviceGroup.shortDescription}</p>
             )}
         </div>
         <button 
@@ -59,7 +59,7 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
     }
 
     .service-group-header {
-        text-align: left;
+        text-align: center;
     }
 
     .service-group-link {
@@ -68,7 +68,7 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
     }
 
     .service-group-name {
-        text-align: left;
+        text-align: center;
         color: var(--color-secondary);
         font-size: 2rem;
         font-weight: 600;
@@ -76,7 +76,7 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
     }
 
     .service-group-name::after {
-        margin-left: 0;
+        margin-left: auto;
         margin-right: auto;
     }
 
@@ -127,8 +127,18 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
+        .service-group-header {
+            text-align: left;
+        }
+
         .service-group-name {
             font-size: 1.75rem;
+            text-align: left;
+        }
+
+        .service-group-name::after {
+            margin-left: 0;
+            margin-right: auto;
         }
 
         .service-group-tile {
