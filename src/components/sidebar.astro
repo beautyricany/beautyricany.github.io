@@ -1,5 +1,6 @@
 ---
 import serviceGroups from '../data/services';
+import ContactSidebar from './contact-sidebar.astro';
 
 // Create URL-friendly slugs from service group names
 function createSlug(name: string): string {
@@ -7,42 +8,50 @@ function createSlug(name: string): string {
 }
 ---
 
-<aside class="sidebar card shadow-sm">
-    <nav class="sidebar-nav p-3 pe-lg-2 ps-lg-4 py-lg-4">
-        <a href="/services" class="sidebar-title-link text-decoration-none">
-            <h3 class="sidebar-title fs-5 mb-3 pb-3 border-bottom">Our Services</h3>
-        </a>
-        <ul class="list-unstyled mb-0">
-            {serviceGroups.map((group) => (
-                <li class="mb-2">
-                    <a href={`/services/${createSlug(group.name)}`} class="group-link d-block px-3 py-2 rounded fw-semibold text-decoration-none">
-                        {group.name}
-                    </a>
-                    <ul class="services-submenu list-unstyled ps-3 mb-0">
-                        {group.services.map((service) => (
-                            <li>
-                                <a href={`/services/${createSlug(group.name)}#${createSlug(service.title)}`} 
-                                   class="service-link d-block px-3 py-2 rounded text-decoration-none">
-                                    {service.title}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </li>
-            ))}
-        </ul>
-    </nav>
-</aside>
+<div class="sidebar-wrapper">
+    <aside class="sidebar card shadow-sm mb-4">
+        <nav class="sidebar-nav p-3 pe-lg-2 ps-lg-4 py-lg-4">
+            <a href="/services" class="sidebar-title-link text-decoration-none">
+                <h3 class="sidebar-title fs-5 mb-3 pb-3 border-bottom">Our Services</h3>
+            </a>
+            <ul class="list-unstyled mb-0">
+                {serviceGroups.map((group) => (
+                    <li class="mb-2">
+                        <a href={`/services/${createSlug(group.name)}`} class="group-link d-block px-3 py-2 rounded fw-semibold text-decoration-none">
+                            {group.name}
+                        </a>
+                        <ul class="services-submenu list-unstyled ps-3 mb-0">
+                            {group.services.map((service) => (
+                                <li>
+                                    <a href={`/services/${createSlug(group.name)}#${createSlug(service.title)}`} 
+                                       class="service-link d-block px-3 py-2 rounded text-decoration-none">
+                                        {service.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    </aside>
+    
+    <ContactSidebar />
+</div>
 
 <style>
     /* ===================================
        Sidebar Component
        =================================== */
-    .sidebar {
+    .sidebar-wrapper {
         position: sticky;
         top: 80px;
         max-height: calc(100vh - 100px);
         overflow-y: auto;
+    }
+
+    .sidebar {
+        overflow-y: visible;
     }
 
     .sidebar-title-link {
@@ -114,21 +123,21 @@ function createSlug(name: string): string {
     }
 
     /* Scrollbar styling */
-    .sidebar::-webkit-scrollbar {
+    .sidebar-wrapper::-webkit-scrollbar {
         width: 6px;
     }
 
-    .sidebar::-webkit-scrollbar-track {
+    .sidebar-wrapper::-webkit-scrollbar-track {
         background: var(--color-bg-light);
         border-radius: 3px;
     }
 
-    .sidebar::-webkit-scrollbar-thumb {
+    .sidebar-wrapper::-webkit-scrollbar-thumb {
         background: var(--color-border);
         border-radius: 3px;
     }
 
-    .sidebar::-webkit-scrollbar-thumb:hover {
+    .sidebar-wrapper::-webkit-scrollbar-thumb:hover {
         background: var(--color-text-light);
     }
 </style>
