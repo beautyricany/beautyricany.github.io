@@ -4,15 +4,19 @@ import { formatPrice } from '../utils/utils';
 
 interface Props {
     serviceGroup: ServiceGroup;
+    showHeader?: boolean;
+    highlightPrices?: boolean;
 }
 
-const { serviceGroup } = Astro.props;
+const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props;
 ---
 
-<div class="price-list-tile card">
-    <div class="card-header">
-        <h3 class="price-list-title mb-0">Price List 💰</h3>
-    </div>
+<div class={`price-list-tile card ${highlightPrices ? 'highlight-prices' : ''}`}>
+    {showHeader && (
+        <div class="card-header">
+            <h3 class="price-list-title mb-0">Price List 💰</h3>
+        </div>
+    )}
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
@@ -39,7 +43,6 @@ const { serviceGroup } = Astro.props;
     .price-list-tile {
         border: 1px solid var(--color-border);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-top: 2rem;
     }
 
     .card-header {
@@ -69,31 +72,51 @@ const { serviceGroup } = Astro.props;
     }
 
     .table tbody td {
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 1.5rem;
         vertical-align: middle;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .table tbody tr:last-child td {
+        border-bottom: none;
     }
 
     .service-name {
         color: var(--color-text-dark);
         font-weight: 500;
+        font-size: 1.05rem;
     }
 
     .service-price {
         color: var(--color-text-dark);
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.25rem;
+        white-space: nowrap;
     }
 
-    .minimal-service-row {
+    :global(.highlight-prices) .service-price {
+        color: var(--color-primary);
+    }
+
+    /* .minimal-service-row td {
+        background-color: var(--color-bg-light);
+    } */
+
+    .minimal-service-row .service-name {
+        font-weight: 400;
+        font-size: 0.95rem;
+    }
+
+    .minimal-service-row .service-price {
+        font-weight: 400;
+    }
+
+    .table-hover tbody tr:hover td {
         background-color: var(--color-bg-light);
     }
 
-    .table-hover tbody tr:hover {
-        background-color: rgba(196, 30, 58, 0.05);
-    }
-
-    .minimal-service-row:hover {
-        background-color: rgba(196, 30, 58, 0.08);
+    .minimal-service-row:hover td {
+        background-color: #E0E0E0 !important;
     }
 
     @media (max-width: 768px) {
@@ -101,12 +124,23 @@ const { serviceGroup } = Astro.props;
             font-size: 1.25rem;
         }
 
-        .table thead th,
         .table tbody td {
             padding: 0.75rem 1rem;
         }
 
+        .service-name {
+            font-size: 0.95rem;
+        }
+
         .service-price {
+            font-size: 1.1rem;
+        }
+
+        .minimal-service-row .service-name {
+            font-size: 0.85rem;
+        }
+
+        .minimal-service-row .service-price {
             font-size: 1rem;
         }
     }
