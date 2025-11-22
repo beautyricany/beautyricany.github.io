@@ -1,6 +1,7 @@
 ---
 import type { ServiceGroup } from '../data/services';
 import ServiceDetail from './service-detail.astro';
+import PriceListTile from './price-list-tile.astro';
 
 interface Props {
     serviceGroup: ServiceGroup;
@@ -51,6 +52,11 @@ const { serviceGroup } = Astro.props;
         {serviceGroup.services.map((service) => (
             <ServiceDetail service={service} />
         ))}
+    </div>
+
+    <!-- Price List -->
+    <div class="price-list-section">
+        <PriceListTile serviceGroup={serviceGroup} />
     </div>
 </section>
 

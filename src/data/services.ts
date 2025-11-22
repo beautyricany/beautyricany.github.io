@@ -7,6 +7,7 @@ export interface ServiceGroup {
     description: Description[];
     images: string[];
     services: Service[];
+    minimalServices: MinimalService[];
 }
 
 export interface Service {
@@ -15,6 +16,11 @@ export interface Service {
     price: number;
     description: Description[];
     images: string[];
+}
+
+export interface MinimalService {
+    title: string;
+    price: number;
 }
 
 export interface Description {
@@ -83,6 +89,11 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["powder-brows-1.jpg", "powder-brows-2.jpg", "powder-brows-3.jpg", "powder-brows-4.jpg"]
             }
+        ],
+        minimalServices: [
+            { title: "Brow Touch-Up Session", price: 150 },
+            { title: "Brow Color Refresh", price: 200 },
+            { title: "Combination Brows", price: 525 }
         ]
     },
     {
@@ -118,6 +129,12 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["eyeliner-1.jpg", "eyeliner-2.jpg", "eyeliner-3.jpg", "eyeliner-4.jpg"]
             }
+        ],
+        minimalServices: [
+            { title: "Eyeliner Touch-Up", price: 125 },
+            { title: "Lower Lash Line Only", price: 250 },
+            { title: "Winged Eyeliner", price: 425 },
+            { title: "Lash Enhancement", price: 300 }
         ]
     },
     {
@@ -154,7 +171,8 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["lip-blushing-1.jpg", "lip-blushing-2.jpg", "lip-blushing-3.jpg", "lip-blushing-4.jpg"]
             }
-        ]
+        ],
+        minimalServices: []
     },
     {
         name: "Special Services",
@@ -206,6 +224,11 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["scar-camouflage-1.jpg"]
             }
+        ],
+        minimalServices: [
+            { title: "Freckles Enhancement", price: 200 },
+            { title: "Areola Restoration", price: 0 },
+            { title: "Hairline Enhancement", price: 0 }
         ]
     },
     {
@@ -263,6 +286,12 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["deluxe-manicure-1.jpg", "deluxe-manicure-2.jpg"]
             }
+        ],
+        minimalServices: [
+            { title: "Polish Change", price: 15 },
+            { title: "Gel Polish Removal", price: 10 },
+            { title: "Nail Repair", price: 5 },
+            { title: "French Manicure", price: 50 }
         ]
     },
     {
@@ -320,6 +349,12 @@ export const serviceGroups: ServiceGroup[] = [
                 ],
                 images: ["deluxe-pedicure-1.jpg", "deluxe-pedicure-2.jpg"]
             }
+        ],
+        minimalServices: [
+            { title: "Polish Change", price: 20 },
+            { title: "Callus Treatment", price: 25 },
+            { title: "Gel Polish Removal", price: 15 },
+            { title: "French Pedicure", price: 60 }
         ]
     }
 ];

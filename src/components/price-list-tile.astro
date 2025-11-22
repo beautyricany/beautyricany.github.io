@@ -1,0 +1,113 @@
+---
+import type { ServiceGroup } from '../data/services';
+import { formatPrice } from '../utils/utils';
+
+interface Props {
+    serviceGroup: ServiceGroup;
+}
+
+const { serviceGroup } = Astro.props;
+---
+
+<div class="price-list-tile card">
+    <div class="card-header">
+        <h3 class="price-list-title mb-0">Price List 💰</h3>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <tbody>
+                    {serviceGroup.services.map((service) => (
+                        <tr>
+                            <td class="service-name">{service.title}</td>
+                            <td class="service-price text-end">{formatPrice(service.price)}</td>
+                        </tr>
+                    ))}
+                    {serviceGroup.minimalServices.map((service) => (
+                        <tr class="minimal-service-row">
+                            <td class="service-name">{service.title}</td>
+                            <td class="service-price text-end">{formatPrice(service.price)}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .price-list-tile {
+        border: 1px solid var(--color-border);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+    }
+
+    .card-header {
+        background-color: var(--color-secondary);
+        padding: 1rem 1.5rem;
+    }
+
+    .price-list-title {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table thead {
+        background-color: var(--color-bg-light);
+    }
+
+    .table thead th {
+        color: var(--color-primary);
+        font-weight: 600;
+        border-bottom: 2px solid var(--color-border);
+        padding: 1rem 1.5rem;
+    }
+
+    .table tbody td {
+        padding: 0.75rem 1.5rem;
+        vertical-align: middle;
+    }
+
+    .service-name {
+        color: var(--color-text-dark);
+        font-weight: 500;
+    }
+
+    .service-price {
+        color: var(--color-text-dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .minimal-service-row {
+        background-color: var(--color-bg-light);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(196, 30, 58, 0.05);
+    }
+
+    .minimal-service-row:hover {
+        background-color: rgba(196, 30, 58, 0.08);
+    }
+
+    @media (max-width: 768px) {
+        .price-list-title {
+            font-size: 1.25rem;
+        }
+
+        .table thead th,
+        .table tbody td {
+            padding: 0.75rem 1rem;
+        }
+
+        .service-price {
+            font-size: 1rem;
+        }
+    }
+</style>

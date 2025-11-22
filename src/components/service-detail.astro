@@ -1,17 +1,12 @@
 ---
 import type { Service } from '../data/services';
+import { formatPrice } from '../utils/utils';
 
 interface Props {
     service: Service;
 }
 
 const { service } = Astro.props;
-
-// Helper function to format price
-function formatPrice(price: number): string {
-    if (price === 0) return "Consultation Required";
-    return `$${price}`;
-}
 ---
 
 <article class="service-detail py-4 py-md-5 mb-4 mb-md-5" id={service.title.toLowerCase().replace(/\s+/g, '-')}>
