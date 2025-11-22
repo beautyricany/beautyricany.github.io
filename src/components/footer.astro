@@ -1,34 +1,40 @@
 ---
 // Footer component for Permanent Beauty
+import { contact } from '../data/contact';
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Permanent Beauty</h4>
-                <p>Your trusted partner in permanent cosmetics and beauty enhancement.</p>
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-md-5">
+                <div class="footer-section">
+                    <h4>Permanent Beauty</h4>
+                    <p>Your trusted partner in permanent cosmetics and beauty enhancement.</p>
+                    <p class="mt-2">👤 {contact.ownerName}</p>
+                    <p>🏢 IČO: {contact.ownerIco}</p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/pricelist">Price List</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/giftcards">Gift Cards</a></li>
-                </ul>
+            <div class="col-12 col-md-3">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/price-list">Price List</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/giftcards">Gift Cards</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p>📍 123 Beauty Street, Suite 100</p>
-                <p>📞 (555) 123-4567</p>
-                <p>✉️ info@permanentbeauty.com</p>
+            <div class="col-12 col-md-4">
+                <div class="footer-section">
+                    <h4><a href="/contact">Contact Info</a></h4>
+                    <p>📍 {contact.address}</p>
+                    <p>📞 <a href={`tel:${contact.phone}`}>{contact.phone}</a></p>
+                    <p>✉️ <a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; {currentYear} Permanent Beauty. All rights reserved.</p>
         </div>
     </div>
 </footer>
@@ -43,13 +49,6 @@ const currentYear = new Date().getFullYear();
         padding: 3rem 0 1rem;
     }
 
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
-        margin-bottom: 2rem;
-    }
-
     .footer-section h4 {
         color: var(--color-accent);
         margin-bottom: 1rem;
@@ -59,6 +58,12 @@ const currentYear = new Date().getFullYear();
     .footer-section p {
         color: rgba(255, 255, 255, 0.8);
         margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
     .footer-section ul li {
@@ -84,14 +89,9 @@ const currentYear = new Date().getFullYear();
         color: rgba(255, 255, 255, 0.6);
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         .footer {
             padding: 2rem 0 1rem;
-        }
-
-        .footer-content {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
         }
 
         .footer-section {
