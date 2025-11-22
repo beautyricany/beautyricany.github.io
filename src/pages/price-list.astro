@@ -2,22 +2,27 @@
 import PageLayout from '../layouts/page-layout.astro';
 import serviceGroups from '../data/services';
 import PriceListTile from '../components/price-list-tile.astro';
+import CollapsibleHeader from '../components/collapsible-header.astro';
 ---
 
 <PageLayout title="Price List" subtitle="Transparent Pricing for All Our Services">
     <section class="price-list-section py-4">
-        {serviceGroups.map((group) => (
-            <div class="price-group mb-4">
-                <div class="price-group-header mb-4 text-center">
-                    <h2 class="section-title price-group-name mb-3">{group.name}</h2>
-                    {group.shortDescription && (
-                        <p class="description-muted mb-0 text-start">{group.shortDescription}</p>
-                    )}
+        {serviceGroups.map((group) => {
+            const collapseId = `price-${group.name.toLowerCase().replace(/\s+/g, '-')}`;
+            return (
+                <div class="price-group mb-4">
+                    <CollapsibleHeader 
+                        title={group.name}
+                        shortDescription={group.shortDescription}
+                        collapseId={collapseId}
+                    />
+                    
+                    <div class="collapse show" id={collapseId}>
+                        <PriceListTile serviceGroup={group} showHeader={false} highlightPrices={true} />
+                    </div>
                 </div>
-                
-                <PriceListTile serviceGroup={group} showHeader={false} highlightPrices={true} />
-            </div>
-        ))}
+            );
+        })}
     </section>
 
     <section class="price-note bg-light py-5 mt-5">
@@ -34,37 +39,9 @@ import PriceListTile from '../components/price-list-tile.astro';
 </PageLayout>
 
 <style>
-    .price-list-section {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
     .price-group {
-        padding-bottom: 2rem;
+        padding: 2rem 0;
     }
-
-    .price-group-header {
-        text-align: center;
-    }
-
-    .price-group-name {
-        color: var(--color-secondary);
-        font-size: 2rem;
-        font-weight: 600;
-        position: relative;
-        display: inline-block;
-    }
-
-    .price-group-name::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background-color: var(--color-primary);
-        margin: 1rem auto;
-    }
-
-
 
     .price-note {
         background-color: var(--color-bg-light) !important;
@@ -72,21 +49,6 @@ import PriceListTile from '../components/price-list-tile.astro';
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
-        .price-group-header {
-            text-align: left;
-        }
-
-        .price-group-name {
-            font-size: 1.75rem;
-            text-align: left;
-            display: block;
-        }
-
-        .price-group-name::after {
-            margin-left: 0;
-            margin-right: auto;
-        }
-
         .table tbody td {
             padding: 0.75rem 1rem;
         }

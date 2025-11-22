@@ -1,6 +1,7 @@
 ---
 import type { ServiceGroup } from '../data/services';
 import ServiceTile from './service-tile.astro';
+import CollapsibleHeader from './collapsible-header.astro';
 
 interface Props {
     serviceGroup: ServiceGroup;
@@ -12,30 +13,13 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
 ---
 
 <div class="service-group-tile mb-4">
-    <div class="service-group-header mb-4 d-flex justify-content-between align-items-center">
-        <div class="flex-grow-1">
-            <a href={`/services/${collapseId}`} class="service-group-link">
-                <h2 class="section-title service-group-name mb-2">{serviceGroup.name}</h2>
-            </a>
-            {serviceGroup.shortDescription && (
-                <p class="description-muted mb-0 text-start">{serviceGroup.shortDescription}</p>
-            )}
-        </div>
-        <button 
-            class="collapse-toggle-btn btn"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target={`#${collapseId}`}
-            aria-expanded="true"
-            aria-controls={collapseId}
-        >
-            <span class="toggle-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </span>
-        </button>
-    </div>
+    <CollapsibleHeader 
+        title={serviceGroup.name}
+        shortDescription={serviceGroup.shortDescription}
+        collapseId={collapseId}
+        showLink={true}
+        linkHref={`/services/${collapseId}`}
+    />
 
     <div class="collapse show" id={collapseId}>
         <div class="row g-4">
@@ -58,96 +42,11 @@ const collapseId = groupId || serviceGroup.name.toLowerCase().replace(/\s+/g, '-
         border-bottom: none;
     }
 
-    .service-group-header {
-        text-align: center;
-    }
-
-    .service-group-link {
-        text-decoration: none;
-        display: block;
-    }
-
-    .service-group-name {
-        text-align: center;
-        color: var(--color-secondary);
-        font-size: 2rem;
-        font-weight: 600;
-        transition: color 0.3s ease;
-    }
-
-    .service-group-name::after {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .service-group-link:hover .service-group-name {
-        color: var(--color-primary);
-    }
-
-    .collapse-toggle-btn {
-        background: none;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        min-width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .collapse-toggle-btn:hover {
-        background-color: var(--color-bg-light);
-        border-radius: 50%;
-    }
-
-    .collapse-toggle-btn:focus {
-        outline: none;
-        box-shadow: none;
-    }
-
-    .collapse-toggle-btn:focus-visible {
-        outline: none;
-    }
-
-    .toggle-icon {
-        color: var(--color-primary);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-
-    .collapse-toggle-btn[aria-expanded="false"] .toggle-icon {
-        transform: rotate(-90deg);
-    }
-
-    .collapse-toggle-btn[aria-expanded="true"] .toggle-icon {
-        transform: rotate(0deg);
-    }
-
     /* Responsive adjustments */
     @media (max-width: 768px) {
-        .service-group-header {
-            text-align: left;
-        }
-
-        .service-group-name {
-            font-size: 1.75rem;
-            text-align: left;
-        }
-
-        .service-group-name::after {
-            margin-left: 0;
-            margin-right: auto;
-        }
 
         .service-group-tile {
             padding: 1.5rem 0;
-        }
-
-        .toggle-icon {
-            width: 20px;
-            height: 20px;
         }
     }
 </style>
