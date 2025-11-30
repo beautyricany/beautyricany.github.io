@@ -34,13 +34,13 @@ const processSteps = [
     <div class="mobile-services-nav d-lg-none mb-4">
         <div class="mobile-nav-toggle">
             <button id="mobile-nav-button" class="btn btn-outline-primary w-100 d-flex justify-content-between align-items-center" type="button">
-                <span>Zobrazit list služeb</span>
-                <svg id="nav-chevron" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <span>Skrýt list služeb</span>
+                <svg id="nav-chevron" class="rotated" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                 </svg>
             </button>
         </div>
-        <div id="mobile-nav-content" class="mobile-nav-content collapsed">
+        <div id="mobile-nav-content" class="mobile-nav-content">
             <ServicesSidebar />
         </div>
     </div>
@@ -75,19 +75,7 @@ const processSteps = [
             border-radius: var(--border-radius);
             background-color: white;
             color: var(--color-secondary);
-            transition: all var(--transition-speed);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        #mobile-nav-button:hover {
-            background-color: var(--color-bg-light);
-            color: var(--color-primary);
-            border-color: var(--color-primary);
-            transform: translateX(3px);
-        }
-
-        #mobile-nav-button:active {
-            transform: translateX(0);
         }
 
         #nav-chevron {
@@ -245,12 +233,12 @@ const processSteps = [
                     content.classList.remove('collapsed');
                     chevron.classList.add('rotated');
                     const span = button.querySelector('span');
-                    if (span) span.textContent = 'Skrýt služby';
+                    if (span) span.textContent = 'Skrýt list služeb';
                 } else {
                     content.classList.add('collapsed');
                     chevron.classList.remove('rotated');
                     const span = button.querySelector('span');
-                    if (span) span.textContent = 'Zobrazit všechny služby';
+                    if (span) span.textContent = 'Zobrazit list služeb';
                 }
             });
         }
