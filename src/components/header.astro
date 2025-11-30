@@ -1,11 +1,12 @@
 ---
 // Header component for Permanent Beauty
+import { IMAGE_BASE_PATH } from '../utils/constants';
 ---
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
     <div class="container-fluid px-lg-4">
         <a class="navbar-brand d-flex align-items-center" href="/">
-            <img src="/images/logo.png" alt="Permanent Beauty Logo" class="logo-img">
+            <img src={`${IMAGE_BASE_PATH}logo.png`} alt="Permanent Beauty Logo" class="logo-img">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Přepnout navigaci">
             <span class="navbar-toggler-icon"></span>

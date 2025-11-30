@@ -1,5 +1,6 @@
 ---
 import type { ServiceGroup } from '../data/services';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 interface Props {
     serviceGroup: ServiceGroup;
@@ -45,7 +46,7 @@ const { serviceGroup } = Astro.props;
             {serviceGroup.images.map((image) => (
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="image-wrapper">
-                        <img src={`/images/${image}`} alt={serviceGroup.name} class="img-fluid rounded shadow-sm" />
+                        <img src={`${IMAGE_BASE_PATH}${image}`} alt={serviceGroup.name} class="img-fluid rounded shadow-sm" />
                     </div>
                 </div>
             ))}

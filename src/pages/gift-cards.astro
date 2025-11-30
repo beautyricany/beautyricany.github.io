@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 ---
 
 <PageLayout title="Dárkové poukazy" subtitle="Sdílejte dárek krásy se svými nejbližšími">
@@ -24,7 +25,7 @@ import PageLayout from '../layouts/page-layout.astro';
                 <div class="col-lg-6 col-md-8">
                     <div class="gift-card-image-wrapper">
                         <img 
-                            src="/images/logo.png" 
+                            src={`${IMAGE_BASE_PATH}logo.png`}
                             alt="Permanent Beauty Gift Card" 
                             class="img-fluid rounded shadow-lg"
                         />

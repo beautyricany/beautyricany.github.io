@@ -1,6 +1,7 @@
 ---
 import CollapsibleHeader from './collapsible-header.astro';
 import type { ImageGroup } from '../data/gallery';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 interface Props {
     imageGroup: ImageGroup;
@@ -22,7 +23,7 @@ const collapseId = `gallery-${imageGroup.title.toLowerCase().replace(/\s+/g, '-'
                 <div class="image-item">
                     <div class="image-wrapper">
                         <img 
-                            src={imageSrc} 
+                            src={`${IMAGE_BASE_PATH}${imageSrc}`}
                             alt={`${imageGroup.title} gallery image`}
                             class="gallery-image"
                             loading="lazy"

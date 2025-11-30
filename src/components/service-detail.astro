@@ -1,6 +1,7 @@
 ---
 import type { Service } from '../data/services';
 import { formatPrice } from '../utils/utils';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 interface Props {
     service: Service;
@@ -63,10 +64,16 @@ const { service } = Astro.props;
                         <div class="col-12">
                             <div class="service-images">
                                 <div class="row g-2 g-md-3">
-                                    {service.images.map((image) => (
+                                    {service.images.map((image, index) => (
                                         <div class="col-12 col-sm-6 col-lg-4">
                                             <div class="image-wrapper">
-                                                <img src={`/images/${image}`} alt={service.title} class="img-fluid rounded shadow-sm" />
+                                                <img 
+                                                    src={`${IMAGE_BASE_PATH}${image}`} 
+                                                    alt={service.title} 
+                                                    class="img-fluid rounded shadow-sm clickable-image" 
+                                                    data-index={index}
+                                                    data-src={`${IMAGE_BASE_PATH}${image}`}
+                                                />
                                             </div>
                                         </div>
                                     ))}
@@ -78,6 +85,14 @@ const { service } = Astro.props;
             </div>
         </div>
 </article>
+
+<!-- Lightbox Modal -->
+<div id="image-lightbox" class="lightbox-overlay">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-container">
+        <img id="lightbox-image" src="" alt="" />
+    </div>
+</div>
 
 <style>
     .custom-bullet-list {
@@ -148,4 +163,156 @@ const { service } = Astro.props;
             font-size: 1.25rem;
         }
     }
+
+    /* Clickable images */
+    .clickable-image {
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .clickable-image:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    /* Lightbox overlay */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox-overlay.active {
+        display: flex;
+    }
+
+    .lightbox-container {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #lightbox-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Close button */
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10001;
+        transition: color 0.3s ease;
+        font-weight: 300;
+        line-height: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lightbox-close:hover {
+        color: var(--color-primary);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 768px) {
+        .lightbox-container {
+            max-width: 95vw;
+            max-height: 85vh;
+        }
+
+        #lightbox-image {
+            max-height: 85vh;
+        }
+
+        .lightbox-close {
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            width: 35px;
+            height: 35px;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const lightbox = document.getElementById('image-lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Gather all clickable images
+        const clickableImages = document.querySelectorAll('.clickable-image');
+        
+        clickableImages.forEach((img) => {
+            img.addEventListener('click', function(this: HTMLImageElement) {
+                const imageSrc = this.dataset.src || '';
+                openLightbox(imageSrc);
+            });
+        });
+
+        function openLightbox(imageSrc: string) {
+            if (lightbox && lightboxImage) {
+                lightboxImage.src = imageSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLightbox() {
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close button
+        closeBtn?.addEventListener('click', closeLightbox);
+
+        // Close on overlay click
+        lightbox?.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox?.classList.contains('active') && e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    });

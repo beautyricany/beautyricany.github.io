@@ -1,5 +1,6 @@
 ---
 import type { Service } from '../data/services';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 interface Props {
     service: Service;
@@ -15,7 +16,7 @@ const serviceUrl = groupSlug ? `/services/${groupSlug}#${serviceSlug}` : '#';
     <div class="service-tile card h-100">
         <div class="service-tile-image">
             {service.images && service.images.length > 0 ? (
-                <img src={service.images[0]} alt={service.title} class="card-img-top" />
+                <img src={`${IMAGE_BASE_PATH}${service.images[0]}`} alt={service.title} class="card-img-top" />
             ) : (
                 <div class="placeholder-image">
                     {service.title}

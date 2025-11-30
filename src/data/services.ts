@@ -223,7 +223,7 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["laminace-oboci.jpg"]
+                images: ["obočí0.png"]
             }
         ],
         minimalServices: []
@@ -526,7 +526,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Lymfodrenáž není vhodná při akutních zánětech, infekcích, žilní trombóze, závažných srdečních onemocněních nebo při neléčené hypertenzi. Pokud si nejste jistí, rádi vám poradíme."
                     }
                 ],
-                images: []
+                images: ["lymfo.jpg"]
             },
             {
                 title: "Vacupress",
