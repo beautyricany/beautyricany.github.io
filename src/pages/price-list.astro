@@ -5,7 +5,7 @@ import PriceListTile from '../components/price-list-tile.astro';
 import CollapsibleHeader from '../components/collapsible-header.astro';
 ---
 
-<PageLayout title="Price List" subtitle="Transparent Pricing for All Our Services">
+<PageLayout title="Ceník" subtitle="Transparentní ceny všech našich služeb">
     <section class="price-list-section py-4">
         {serviceGroups.map((group) => {
             const collapseId = `price-${group.name.toLowerCase().replace(/\s+/g, '-')}`;
@@ -31,9 +31,9 @@ import CollapsibleHeader from '../components/collapsible-header.astro';
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h3 class="mb-3">Important Information</h3>
-                    <p class="description-muted">All prices include a complimentary consultation and touch-up session within 6-8 weeks. Individual results and longevity may vary based on skin type, lifestyle, and aftercare.</p>
-                    <p class="description-muted mb-0">Have questions about our pricing? <a href="/contact" class="text-decoration-none fw-semibold" style="color: var(--color-primary);">Contact us</a> for more information.</p>
+                    <h3 class="mb-3">Důležité informace</h3>
+                    <p class="description-muted">Všechny ceny zahrnují bezplatnou konzultaci a dodatečné ošetření do 6-8 týdnů. Individuální výsledky a trvanlivost se mohou lišit v závislosti na typu pokožky, životním stylu a péči po ošetření.</p>
+                    <p class="description-muted mb-0">Máte otázky ohledně našich cen? <a href="/contact" class="text-decoration-none fw-semibold" style="color: var(--color-primary);">Kontaktujte nás</a> pro více informací.</p>
                 </div>
             </div>
         </div>

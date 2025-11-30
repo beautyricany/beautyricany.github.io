@@ -4,6 +4,6 @@
  * @returns Formatted price string
  */
 export function formatPrice(price: number): string {
-    if (price === 0) return "Consultation Required";
+    if (price === 0) return "Cena na dotaz";
     return `${price} Kč`;
 }
