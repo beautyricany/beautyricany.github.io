@@ -502,7 +502,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Objednejte se na IPL epilaci a zjistěte, jak snadné a příjemné může být zbavit se chloupků jednou provždy. Rádi vám poradíme, která ošetření jsou pro vás nejvhodnější."
                     }
                 ],
-                images: ["trvala-epilace.jpg"]
+                images: ["ipl1.png", "ipl2.png", "ipl3.jpg"]
             }
         ],
         minimalServices: []
