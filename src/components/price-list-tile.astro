@@ -28,7 +28,7 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
                         </tr>
                     ))}
                     {serviceGroup.minimalServices.map((service) => (
-                        <tr class="minimal-service-row">
+                        <tr>
                             <td class="service-name">{service.title}</td>
                             <td class="service-price text-end">{formatPrice(service.price)}</td>
                         </tr>
