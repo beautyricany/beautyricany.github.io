@@ -32,7 +32,17 @@ const processSteps = [
 <PageLayout title="Naše služby" subtitle="Profesionální trvalý make-up a kosmetická ošetření">
     <!-- Mobile Services Navigation -->
     <div class="mobile-services-nav d-lg-none mb-4">
-        <ServicesSidebar />
+        <div class="mobile-nav-toggle">
+            <button id="mobile-nav-button" class="btn btn-outline-primary w-100 d-flex justify-content-between align-items-center" type="button">
+                <span>Zobrazit list služeb</span>
+                <svg id="nav-chevron" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-nav-content" class="mobile-nav-content collapsed">
+            <ServicesSidebar />
+        </div>
     </div>
 
     <section class="services-section py-4">
@@ -53,6 +63,51 @@ const processSteps = [
        Mobile Services Navigation
        =================================== */
     @media (max-width: 991px) {
+        .mobile-nav-toggle {
+            margin-bottom: 1rem;
+        }
+
+        #mobile-nav-button {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            background-color: white;
+            color: var(--color-secondary);
+            transition: all var(--transition-speed);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #mobile-nav-button:hover {
+            background-color: var(--color-bg-light);
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateX(3px);
+        }
+
+        #mobile-nav-button:active {
+            transform: translateX(0);
+        }
+
+        #nav-chevron {
+            transition: transform 0.3s ease;
+        }
+
+        #nav-chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .mobile-nav-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .mobile-nav-content.collapsed {
+            max-height: 0;
+        }
+
         .mobile-services-nav :global(.services-submenu) {
             max-height: none !important;
             opacity: 1 !important;
@@ -175,3 +230,29 @@ const processSteps = [
         }
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('mobile-nav-button');
+        const content = document.getElementById('mobile-nav-content');
+        const chevron = document.getElementById('nav-chevron');
+
+        if (button && content && chevron) {
+            button.addEventListener('click', () => {
+                const isCollapsed = content.classList.contains('collapsed');
+                
+                if (isCollapsed) {
+                    content.classList.remove('collapsed');
+                    chevron.classList.add('rotated');
+                    const span = button.querySelector('span');
+                    if (span) span.textContent = 'Skrýt služby';
+                } else {
+                    content.classList.add('collapsed');
+                    chevron.classList.remove('rotated');
+                    const span = button.querySelector('span');
+                    if (span) span.textContent = 'Zobrazit všechny služby';
+                }
+            });
+        }
+    });
+</script>
