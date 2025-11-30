@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
 import ServiceGroupTile from '../components/service-group-tile.astro';
+import CtaSection from '../components/cta-section.astro';
 import serviceGroups from '../data/services';
 
 const processSteps = [
@@ -34,11 +35,11 @@ const processSteps = [
         ))}
     </section>
 
-    <section class="cta">
-        <h2>Not Sure Which Service is Right for You?</h2>
-        <p>Contact us and let our experts guide you to the perfect treatment.</p>
-        <a href="/contact" class="btn btn-primary">Get In Touch</a>
-    </section>
+    <CtaSection 
+        title="Nejste si jisti, která služba je pro vás ta správná?"
+        text="Kontaktujte nás a nechte naše odborníky vést vás k dokonalému ošetření."
+        buttonText="Kontaktujte nás"
+    />
 </PageLayout>
 
 <style>
@@ -112,28 +113,6 @@ const processSteps = [
     }
 
     /* ===================================
-       CTA Section
-       =================================== */
-    .cta {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, var(--color-primary) 0%, #A01828 100%);
-        color: var(--color-accent);
-        border-radius: var(--border-radius);
-    }
-
-    .cta h2 {
-        color: var(--color-accent);
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    /* ===================================
        Responsive Design
        =================================== */
     @media (max-width: 768px) {
@@ -144,14 +123,6 @@ const processSteps = [
         .process-steps {
             grid-template-columns: 1fr;
             padding: 0 1rem;
-        }
-
-        .cta {
-            padding: 3rem 1.5rem;
-        }
-
-        .cta h2 {
-            font-size: 1.5rem;
         }
 
         .btn {

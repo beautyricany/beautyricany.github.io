@@ -1,6 +1,7 @@
 ---
 import AboutHero from '../components/about-hero.astro';
 import PageContent from '../components/page-content.astro';
+import CtaSection from '../components/cta-section.astro';
 
 // About section content - to be included in index page
 ---
@@ -120,13 +121,10 @@ import PageContent from '../components/page-content.astro';
         </div>
     </section>
 
-    <section class="cta py-5 bg-light">
-        <div class="container text-center">
-            <h2 class="mb-3">Jste připraveni zažít rozdíl?</h2>
-            <p class="description-muted mb-4">Kontaktujte nás a dozvězte se více o tom, jak trvalá krása může zjednodušit vaši rutinu.</p>
-            <a href="/contact" class="btn btn-primary btn-lg px-5">Kontaktujte nás</a>
-        </div>
-    </section>
+    <CtaSection 
+        title="Jste připraveni zažít rozdíl?"
+        text="Kontaktujte nás a dozvězte se více o tom, jak trvalá krása může zjednodušit vaši rutinu."
+    />
 </PageContent>
 
 <style>
