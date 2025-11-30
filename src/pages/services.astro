@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
 import ServiceGroupTile from '../components/service-group-tile.astro';
+import ServicesSidebar from '../components/services-sidebar.astro';
 import CtaSection from '../components/cta-section.astro';
 import serviceGroups from '../data/services';
 
@@ -29,6 +30,11 @@ const processSteps = [
 ---
 
 <PageLayout title="Naše služby" subtitle="Profesionální trvalý make-up a kosmetická ošetření">
+    <!-- Mobile Services Navigation -->
+    <div class="mobile-services-nav d-lg-none mb-4">
+        <ServicesSidebar />
+    </div>
+
     <section class="services-section py-4">
         {serviceGroups.map((group) => (
             <ServiceGroupTile serviceGroup={group} />
@@ -43,6 +49,45 @@ const processSteps = [
 </PageLayout>
 
 <style>
+    /* ===================================
+       Mobile Services Navigation
+       =================================== */
+    @media (max-width: 991px) {
+        .mobile-services-nav :global(.services-submenu) {
+            max-height: none !important;
+            opacity: 1 !important;
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+            overflow: visible !important;
+            display: block !important;
+        }
+
+        .mobile-services-nav :global(.sidebar-nav) {
+            padding: 1.25rem !important;
+        }
+
+        .mobile-services-nav :global(.group-link) {
+            font-size: 1.05rem;
+            padding: 0.7rem 1rem !important;
+            border-left: 4px solid var(--color-primary);
+            padding-left: 0.75rem !important;
+        }
+
+        .mobile-services-nav :global(.group-link:hover) {
+            background-color: var(--color-bg-light) !important;
+        }
+
+        .mobile-services-nav :global(.service-link) {
+            font-size: 0.95rem;
+            padding: 0.6rem 1rem !important;
+            color: #1a1a1a !important;
+        }
+
+        .mobile-services-nav :global(.service-link:hover) {
+            color: var(--color-primary) !important;
+        }
+    }
+
     /* ===================================
        Services Section
        =================================== */
