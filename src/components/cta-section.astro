@@ -1,0 +1,65 @@
+---
+interface Props {
+    title: string;
+    text: string;
+    buttonText?: string;
+    buttonHref?: string;
+}
+
+const { title, text, buttonText = "Kontaktujte nás", buttonHref = "/contact" } = Astro.props;
+---
+
+<section class="cta-section py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="mb-3">{title}</h2>
+        <p class="description-muted mb-4">{text}</p>
+        <a href={buttonHref} class="btn btn-primary btn-lg px-5">{buttonText}</a>
+    </div>
+</section>
+
+<style>
+    .cta-section {
+        background: linear-gradient(135deg, var(--color-bg-light) 0%, #FFFFFF 100%);
+    }
+
+    .cta-section h2 {
+        color: var(--color-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .cta-section p {
+        color: var(--color-text-dark);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-section .btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        transition: all var(--transition-speed);
+    }
+
+    .cta-section .btn-primary:hover {
+        background-color: var(--color-hover);
+        border-color: var(--color-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    @media (max-width: 768px) {
+        .cta-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+        }
+
+        .cta-section .btn {
+            width: 100%;
+        }
+    }
+</style>

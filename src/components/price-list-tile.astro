@@ -14,7 +14,7 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
 <div class={`price-list-tile card ${highlightPrices ? 'highlight-prices' : ''}`}>
     {showHeader && (
         <div class="card-header">
-            <h3 class="price-list-title mb-0">Price List 💰</h3>
+            <h3 class="price-list-title mb-0">Ceník 💰</h3>
         </div>
     )}
     <div class="card-body p-0">
@@ -28,7 +28,7 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
                         </tr>
                     ))}
                     {serviceGroup.minimalServices.map((service) => (
-                        <tr class="minimal-service-row">
+                        <tr>
                             <td class="service-name">{service.title}</td>
                             <td class="service-price text-end">{formatPrice(service.price)}</td>
                         </tr>

@@ -1,0 +1,114 @@
+---
+// Reusable lightbox modal component
+---
+
+<!-- Lightbox Modal -->
+<div id="image-lightbox" class="lightbox-overlay">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-container">
+        <img id="lightbox-image" src="" alt="" />
+    </div>
+</div>
+
+<style>
+    /* Lightbox overlay */
+    .lightbox-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox-overlay.active {
+        display: flex;
+    }
+
+    .lightbox-container {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #lightbox-image {
+        max-width: 80%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Close button */
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10001;
+        transition: color 0.3s ease;
+        font-weight: 300;
+        line-height: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lightbox-close:hover {
+        color: var(--color-primary);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 768px) {
+        .lightbox-container {
+            max-width: 95vw;
+            max-height: 85vh;
+        }
+
+        #lightbox-image {
+            max-width: 90%;
+            max-height: 75vh;
+        }
+
+        .lightbox-close {
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            width: 35px;
+            height: 35px;
+        }
+    }
+</style>
+
+<script>
+    import { initializeLightbox } from '../utils/lightbox';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeLightbox();
+    });
+</script>

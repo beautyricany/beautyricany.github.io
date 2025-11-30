@@ -1,6 +1,9 @@
 ---
 import AboutHero from '../components/about-hero.astro';
 import PageContent from '../components/page-content.astro';
+import CtaSection from '../components/cta-section.astro';
+import ImageLightbox from '../components/image-lightbox.astro';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 // About section content - to be included in index page
 ---
@@ -8,121 +11,89 @@ import PageContent from '../components/page-content.astro';
 <AboutHero />
 
 <PageContent>
-    <section class="about-intro">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h2>About Our Studio ěšáýžěá</h2>
-                        <p class="description-muted">Welcome to Permanent Beauty, where artistry meets expertise in the world of permanent cosmetics. Since our establishment, we've been dedicated to helping our clients feel confident and beautiful every single day.</p>
-                        <p class="description-muted">Our state-of-the-art studio provides a comfortable, professional environment where you can relax while our certified specialists work their magic. We believe in enhancing your natural beauty with subtle, sophisticated techniques that stand the test of time.</p>
-                        <p class="description-muted">Every treatment begins with a thorough consultation to understand your goals, preferences, and unique features. We take pride in creating customized solutions that complement your individual style and lifestyle.</p>
-                    </div>
-                    <div class="about-image-large">
-                        <div class="placeholder-image">Studio Interior Photo</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="studio-highlights">
-            <div class="container">
-                <h2 class="section-title">What Makes Us Special</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💄</div>
-                        <h3>Expert Artistry</h3>
-                        <p class="description-muted">Our certified specialists have years of experience and continue training in the latest permanent makeup techniques.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">✨</div>
-                        <h3>Premium Products</h3>
-                        <p class="description-muted">We use only FDA-approved pigments and state-of-the-art equipment for superior, long-lasting results.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Safety First</h3>
-                        <p class="description-muted">Strict sterilization protocols and the highest hygiene standards ensure your safety and peace of mind.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👤</div>
-                        <h3>Personalized Approach</h3>
-                        <p class="description-muted">Each treatment is customized to your facial features, skin tone, and personal style preferences.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="studio-gallery-preview">
-            <div class="container">
-                <h2 class="section-title">Our Studio</h2>
-                <div class="studio-images-grid">
-                    <div class="studio-image">
-                        <div class="placeholder-image">Reception Area</div>
-                    </div>
-                    <div class="studio-image">
-                        <div class="placeholder-image">Treatment Room</div>
-                    </div>
-                    <div class="studio-image">
-                        <div class="placeholder-image">Consultation Space</div>
-                    </div>
-                    <div class="studio-image">
-                        <div class="placeholder-image">Products & Equipment</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="our-approach">
-            <div class="container">
-                <h2 class="section-title">Our Approach</h2>
-                <div class="approach-content">
-                    <div class="approach-item">
-                        <h3>🔍 Detailed Consultation</h3>
-                        <p class="description-muted">We begin with an in-depth discussion of your beauty goals, lifestyle, and expectations. We'll examine your features and recommend the best treatments for you.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>🎯 Custom Design</h3>
-                        <p class="description-muted">Every face is unique. We create a customized design that enhances your natural features and complements your facial structure and coloring.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>✨ Professional Application</h3>
-                        <p class="description-muted">Using advanced techniques and premium products, we carefully apply your permanent makeup with precision and artistry.</p>
-                    </div>
-                    <div class="approach-item">
-                        <h3>💝 Aftercare Support</h3>
-                        <p class="description-muted">We provide comprehensive aftercare instructions and follow-up support to ensure perfect healing and results you'll love.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <section class="cta">
+    <section class="about-intro py-5">
         <div class="container">
-            <h2>Ready to Experience the Difference?</h2>
-            <p class="description-muted">Contact us to learn more about how permanent beauty can simplify your routine.</p>
-            <a href="/contact" class="btn btn-primary">Get In Touch</a>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">O našem studiu</h2>
+                    <p class="description-muted">Nabízíme Vám širokou nabídku služeb péče o vzhled a celé tělo. Kombinujeme profesionální kosmetické techniky, moderní přístrojové ošetření a individuální přístup, díky kterému se budete cítit sebevědomě, odpočatě a krásně.</p>
+                    <p class="description-muted">Náš salon  se nachází na dobře přístupném místě v ulici Černokostelecká u zastávky autobusu (Sokolovna), s možností bezplatného parkování v okolí.</p>
+                    <p class="description-muted">Těší se na Vás majitelka Eva a tým PB.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src={`${IMAGE_BASE_PATH}/salon/uvod.jpg`} alt="Interiér studia" class="studio-intro-image" />
+                </div>
+            </div>
         </div>
     </section>
+
+    <section class="studio-highlights py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Co nás dělá výjimečnými</h2>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-6">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">👤</div>
+                        <h3 class="h5 mb-3">Personalizovaný přístup</h3>
+                        <p class="description-muted mb-0">Každé ošetření ošetření je konzultováno a přizpůsobeno Vašim preferencím a osobnímu stylu. Vybereme nejvhodnější způsob ošetření s přihlédnutím k Vašim rysům a typu pleti.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">✨</div>
+                        <h3 class="h5 mb-3">Osvědčené produkty</h3>
+                        <p class="description-muted mb-0">Používáme pouze osvědčené produkty renomovaných firem: SynCare, ItalWax, Podopharm, Spirularin...</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">💄</div>
+                        <h3 class="h5 mb-3">Držíme krok s trendy</h3>
+                        <p class="description-muted mb-0">Neustále se seznamujeme inovacemi v oboru a průběžně si doplňujeme vzdělání.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3">🛡️</div>
+                        <h3 class="h5 mb-3">Bezpečnost</h3>
+                        <p class="description-muted mb-0">Dodržujeme nejpřísnější hygienické standardy pro Váš klid a bezpečnost.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="studio-gallery-preview py-5">
+        <div class="container">
+            <h2 class="section-title">Naše studio</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="studio-image clickable-image" data-src={`${IMAGE_BASE_PATH}/salon/s0.jpg`}>
+                        <img src={`${IMAGE_BASE_PATH}/salon/s0.jpg`} alt="Salon - recepce" class="img-fluid rounded" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="studio-image clickable-image" data-src={`${IMAGE_BASE_PATH}/salon/s3.jpg`}>
+                        <img src={`${IMAGE_BASE_PATH}/salon/s3.jpg`} alt="Salon - ošetřovací místnost" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <ImageLightbox />
+
+    <CtaSection 
+        title="Jste připraveni zažít rozdíl?"
+        text="Kontaktujte nás a dozvězte se více o tom, jak trvalá krása může zjednodušit vaši rutinu."
+    />
 </PageContent>
 
 <style>
-    /* ===================================
-    About Page
-    =================================== */
-    .about-content {
-        padding: 5rem 0;
-    }
-
-    .about-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-        align-items: center;
-    }
-
-    .about-image, .placeholder-image {
+    .placeholder-image {
         background: linear-gradient(135deg, var(--color-bg-light) 0%, #E0E0E0 100%);
-        border-radius: var(--border-radius);
+        border-radius: 8px;
         aspect-ratio: 4/3;
         display: flex;
         align-items: center;
@@ -130,101 +101,80 @@ import PageContent from '../components/page-content.astro';
         color: var(--color-text-light);
         font-weight: 600;
         min-height: 250px;
+        max-width: 100%;
     }
 
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
+    .studio-intro-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
     }
 
-    .team-member {
-        text-align: center;
-        padding: 2rem;
-        background-color: var(--color-accent);
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow);
+    @media (max-width: 576px) {
+        .studio-intro-image {
+            aspect-ratio: 16/9;
+        }
+
+        .about-intro .placeholder-image {
+            min-height: 200px;
+            aspect-ratio: 16/9;
+        }
+    }
+
+    .about-intro h2 {
+        color: var(--color-secondary);
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .feature-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+    }
+
+    .studio-image {
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .studio-image:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+
+    .studio-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .studio-image .placeholder-image {
+        aspect-ratio: 1;
+        min-height: 200px;
+    }
+
+    .approach-item {
+        background-color: white;
+        border-radius: 8px;
+        border-left: 4px solid var(--color-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform var(--transition-speed);
     }
 
-    .team-member:hover {
-        transform: translateY(-5px);
-    }
-
-    .member-image {
-        margin-bottom: 1.5rem;
-    }
-
-    .member-image .placeholder-image {
-        aspect-ratio: 1;
-        border-radius: 50%;
-        max-width: 200px;
-        margin: 0 auto;
-    }
-
-    .member-role {
-        color: var(--color-primary);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
-
-    .values {
-        background-color: var(--color-bg-light);
-    }
-
-    .values-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
-
-    .value-item {
-        padding: 2rem;
-        background-color: var(--color-accent);
-        border-radius: var(--border-radius);
-        border-left: 4px solid var(--color-primary);
-    }
-
-    .value-item h3 {
-        color: var(--color-secondary);
-        margin-bottom: 0.75rem;
-    }
-
-    .value-item p {
-        color: var(--color-text-light);
-        margin-bottom: 0;
-    }
-
-    /* ===================================
-       Responsive Design
-       =================================== */
-    @media (max-width: 768px) {
-        .about-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .about-image-large {
-            order: -1;
-            min-height: 300px;
-        }
-
-        .hero {
-            padding: 4rem 1rem;
-        }
-
-        .hero-buttons {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .btn {
-            width: 100%;
-        }
-
-        .features-grid,
-        .studio-images-grid,
-        .approach-content {
-            grid-template-columns: 1fr;
-        }
+    .approach-item:hover {
+        transform: translateX(5px);
     }
 </style>

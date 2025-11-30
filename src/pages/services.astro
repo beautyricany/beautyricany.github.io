@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
 import ServiceGroupTile from '../components/service-group-tile.astro';
+import ServicesSidebar from '../components/services-sidebar.astro';
+import CtaSection from '../components/cta-section.astro';
 import serviceGroups from '../data/services';
 
 const processSteps = [
@@ -27,34 +29,108 @@ const processSteps = [
 ];
 ---
 
-<PageLayout title="Our Services" subtitle="Professional Permanent Makeup & Cosmetic Treatments">
+<PageLayout title="Naše služby" subtitle="Profesionální trvalý make-up a kosmetická ošetření">
+    <!-- Mobile Services Navigation -->
+    <div class="mobile-services-nav d-lg-none mb-4">
+        <div class="mobile-nav-toggle">
+            <button id="mobile-nav-button" class="btn btn-outline-primary w-100 d-flex justify-content-between align-items-center" type="button">
+                <span>Skrýt list služeb</span>
+                <svg id="nav-chevron" class="rotated" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-nav-content" class="mobile-nav-content">
+            <ServicesSidebar />
+        </div>
+    </div>
+
     <section class="services-section py-4">
         {serviceGroups.map((group) => (
             <ServiceGroupTile serviceGroup={group} />
         ))}
     </section>
 
-    <section class="process">
-            <h2 class="section-title">Our Process</h2>
-            <div class="process-steps">
-                {processSteps.map((step) => (
-                    <div class="process-step">
-                        <div class="step-number">{step.number}</div>
-                        <h3>{step.title}</h3>
-                        <p>{step.description}</p>
-                    </div>
-                ))}
-            </div>
-    </section>
-
-    <section class="cta">
-        <h2>Not Sure Which Service is Right for You?</h2>
-        <p>Contact us and let our experts guide you to the perfect treatment.</p>
-        <a href="/contact" class="btn btn-primary">Get In Touch</a>
-    </section>
+    <CtaSection 
+        title="Nejste si jisti, která služba je pro vás ta správná?"
+        text="Kontaktujte nás a nechte naše odborníky vést vás k dokonalému ošetření."
+        buttonText="Kontaktujte nás"
+    />
 </PageLayout>
 
 <style>
+    /* ===================================
+       Mobile Services Navigation
+       =================================== */
+    @media (max-width: 991px) {
+        .mobile-nav-toggle {
+            margin-bottom: 1rem;
+        }
+
+        #mobile-nav-button {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            background-color: white;
+            color: var(--color-secondary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #nav-chevron {
+            transition: transform 0.3s ease;
+        }
+
+        #nav-chevron.rotated {
+            transform: rotate(180deg);
+        }
+
+        .mobile-nav-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .mobile-nav-content.collapsed {
+            max-height: 0;
+        }
+
+        .mobile-services-nav :global(.services-submenu) {
+            max-height: none !important;
+            opacity: 1 !important;
+            margin-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+            overflow: visible !important;
+            display: block !important;
+        }
+
+        .mobile-services-nav :global(.sidebar-nav) {
+            padding: 1.25rem !important;
+        }
+
+        .mobile-services-nav :global(.group-link) {
+            font-size: 1.05rem;
+            padding: 0.7rem 1rem !important;
+            border-left: 4px solid var(--color-primary);
+            padding-left: 0.75rem !important;
+        }
+
+        .mobile-services-nav :global(.group-link:hover) {
+            background-color: var(--color-bg-light) !important;
+        }
+
+        .mobile-services-nav :global(.service-link) {
+            font-size: 0.95rem;
+            padding: 0.6rem 1rem !important;
+            color: #1a1a1a !important;
+        }
+
+        .mobile-services-nav :global(.service-link:hover) {
+            color: var(--color-primary) !important;
+        }
+    }
+
     /* ===================================
        Services Section
        =================================== */
@@ -125,28 +201,6 @@ const processSteps = [
     }
 
     /* ===================================
-       CTA Section
-       =================================== */
-    .cta {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, var(--color-primary) 0%, #A01828 100%);
-        color: var(--color-accent);
-        border-radius: var(--border-radius);
-    }
-
-    .cta h2 {
-        color: var(--color-accent);
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    /* ===================================
        Responsive Design
        =================================== */
     @media (max-width: 768px) {
@@ -159,16 +213,34 @@ const processSteps = [
             padding: 0 1rem;
         }
 
-        .cta {
-            padding: 3rem 1.5rem;
-        }
-
-        .cta h2 {
-            font-size: 1.5rem;
-        }
-
         .btn {
             width: 100%;
         }
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('mobile-nav-button');
+        const content = document.getElementById('mobile-nav-content');
+        const chevron = document.getElementById('nav-chevron');
+
+        if (button && content && chevron) {
+            button.addEventListener('click', () => {
+                const isCollapsed = content.classList.contains('collapsed');
+                
+                if (isCollapsed) {
+                    content.classList.remove('collapsed');
+                    chevron.classList.add('rotated');
+                    const span = button.querySelector('span');
+                    if (span) span.textContent = 'Skrýt list služeb';
+                } else {
+                    content.classList.add('collapsed');
+                    chevron.classList.remove('rotated');
+                    const span = button.querySelector('span');
+                    if (span) span.textContent = 'Zobrazit list služeb';
+                }
+            });
+        }
+    });
+</script>

@@ -4,13 +4,13 @@ import GoogleMap from '../components/google-map.astro';
 import { contact } from '../data/contact';
 ---
 
-<PageLayout title="Contact Us" subtitle="Get in touch with us for bookings, questions, or consultations">
+<PageLayout title="Kontaktujte nás" subtitle="Kontaktujte nás pro rezervace, dotazy nebo konzultace">
     <section class="contact-content py-4">
         <div class="container">
             <div class="row g-4 mb-5">
                 <!-- Contact Information -->
                 <div class="col-12">
-                    <h2 class="section-title">Contact Us</h2>
+                    <h2 class="section-title">Kontaktujte nás</h2>
                     <div class="contact-info-grid">
                         <div class="contact-info-card card shadow-sm">
                             <div class="card-body p-4">
@@ -19,7 +19,7 @@ import { contact } from '../data/contact';
                                     <div class="d-flex align-items-start gap-3">
                                         <div class="contact-icon-large">📍</div>
                                         <div>
-                                            <h3 class="h6 fw-semibold text-secondary mb-1">Address</h3>
+                                            <h3 class="h6 fw-semibold text-secondary mb-1">Adresa</h3>
                                             <p class="mb-0">{contact.address}</p>
                                         </div>
                                     </div>
@@ -33,7 +33,7 @@ import { contact } from '../data/contact';
                                     <div class="d-flex align-items-start gap-3">
                                         <div class="contact-icon-large">📞</div>
                                         <div>
-                                            <h3 class="h6 fw-semibold text-secondary mb-1">Phone</h3>
+                                            <h3 class="h6 fw-semibold text-secondary mb-1">Telefon</h3>
                                             <p class="mb-0">
                                                 <a href={`tel:${contact.phone}`} class="contact-link-primary">{contact.phone}</a>
                                             </p>
@@ -43,17 +43,19 @@ import { contact } from '../data/contact';
                             </div>
                         </div>
 
-                        <div class="contact-info-card card shadow-sm">
+                        <div class="contact-info-card card shadow-sm email-card">
                             <div class="card-body p-4">
                                 <div class="contact-item-detail">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="contact-icon-large">✉️</div>
-                                        <div>
-                                            <h3 class="h6 fw-semibold text-secondary mb-1">Email</h3>
-                                            <p class="mb-0">
-                                                <a href={`mailto:${contact.email}`} class="contact-link-primary">{contact.email}</a>
-                                            </p>
+                                    <div class="email-layout text-center">
+                                        <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                                            <div class="contact-icon-large">✉️</div>
+                                            <h3 class="h6 fw-semibold text-secondary mb-0">Email</h3>
                                         </div>
+                                        <p class="mb-0">
+                                            <a href={`mailto:${contact.email}`} class="contact-link-primary">
+                                                {contact.email.split('@')[0]}<wbr />@{contact.email.split('@')[1]}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +67,7 @@ import { contact } from '../data/contact';
                                     <div class="d-flex align-items-start gap-3">
                                         <div class="contact-icon-large">👤</div>
                                         <div>
-                                            <h3 class="h6 fw-semibold text-secondary mb-1">Owner</h3>
+                                            <h3 class="h6 fw-semibold text-secondary mb-1">Majitel</h3>
                                             <p class="mb-1">{contact.ownerName}</p>
                                             <p class="mb-0 small text-muted">IČO: {contact.ownerIco}</p>
                                         </div>
@@ -78,7 +80,7 @@ import { contact } from '../data/contact';
                             <div class="card-body p-4">
                                 <div class="contact-item-detail">
                                     <div class="social-media-section">
-                                        <h3 class="h6 fw-semibold text-secondary mb-4">Follow Us</h3>
+                                        <h3 class="h6 fw-semibold text-secondary mb-4">Sledujte nás</h3>
                                         <div class="d-flex gap-3 justify-content-center">
                                             <a href={contact.facebook} target="_blank" rel="noopener noreferrer" class="social-icon-link">
                                             <svg width="32" height="32" viewBox="0 0 24 24" fill="#1877F2">
@@ -109,7 +111,7 @@ import { contact } from '../data/contact';
                 <!-- Map Section -->
                 <div class="row mt-5">
                     <div class="col-12">
-                        <h2 class="section-title">Find Us</h2>
+                        <h2 class="section-title">Kde nás najdete</h2>
                         <GoogleMap address={contact.address} />
                     </div>
                 </div>
@@ -161,6 +163,8 @@ import { contact } from '../data/contact';
         text-decoration: none;
         transition: opacity var(--transition-speed);
         font-weight: 500;
+        word-break: break-all;
+        overflow-wrap: break-word;
     }
 
     .contact-link-primary:hover {
@@ -176,6 +180,18 @@ import { contact } from '../data/contact';
 
     .social-icon-link:hover {
         transform: scale(1.15);
+    }
+
+    .email-layout {
+        width: 100%;
+    }
+
+    .email-card .card-body {
+        padding: 1rem 0.75rem !important;
+    }
+
+    .email-card .contact-link-primary {
+        font-size: 0.95rem;
     }
 
     @media (max-width: 767px) {

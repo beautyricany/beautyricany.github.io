@@ -1,5 +1,6 @@
 ---
 import type { Service } from '../data/services';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 interface Props {
     service: Service;
@@ -15,7 +16,7 @@ const serviceUrl = groupSlug ? `/services/${groupSlug}#${serviceSlug}` : '#';
     <div class="service-tile card h-100">
         <div class="service-tile-image">
             {service.images && service.images.length > 0 ? (
-                <img src={service.images[0]} alt={service.title} class="card-img-top" />
+                <img src={`${IMAGE_BASE_PATH}${service.images[0]}`} alt={service.title} class="card-img-top" />
             ) : (
                 <div class="placeholder-image">
                     {service.title}
@@ -28,7 +29,7 @@ const serviceUrl = groupSlug ? `/services/${groupSlug}#${serviceSlug}` : '#';
                 <p class="card-text description-muted mb-3">{service.shortDescription}</p>
             )}
             <div class="mt-auto">
-                <span class="btn btn-outline-primary btn-sm w-100">Learn More</span>
+                <span class="btn btn-outline-primary btn-sm w-100">Více informací</span>
             </div>
         </div>
     </div>

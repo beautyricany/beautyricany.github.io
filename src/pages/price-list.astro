@@ -3,9 +3,10 @@ import PageLayout from '../layouts/page-layout.astro';
 import serviceGroups from '../data/services';
 import PriceListTile from '../components/price-list-tile.astro';
 import CollapsibleHeader from '../components/collapsible-header.astro';
+import CtaSection from '../components/cta-section.astro';
 ---
 
-<PageLayout title="Price List" subtitle="Transparent Pricing for All Our Services">
+<PageLayout title="Ceník" subtitle="Transparentní ceny všech našich služeb">
     <section class="price-list-section py-4">
         {serviceGroups.map((group) => {
             const collapseId = `price-${group.name.toLowerCase().replace(/\s+/g, '-')}`;
@@ -27,26 +28,15 @@ import CollapsibleHeader from '../components/collapsible-header.astro';
         })}
     </section>
 
-    <section class="price-note bg-light py-5 mt-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h3 class="mb-3">Important Information</h3>
-                    <p class="description-muted">All prices include a complimentary consultation and touch-up session within 6-8 weeks. Individual results and longevity may vary based on skin type, lifestyle, and aftercare.</p>
-                    <p class="description-muted mb-0">Have questions about our pricing? <a href="/contact" class="text-decoration-none fw-semibold" style="color: var(--color-primary);">Contact us</a> for more information.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <CtaSection 
+        title="Potřebujete poradit s výběrem?"
+        text="Rádi vám pomůžeme vybrat vhodné ošetření a zodpovíme všechny vaše otázky ohledně cen a procesu. Všechny naše služby zahrnují bezplatnou konzultaci."
+    />
 </PageLayout>
 
 <style>
     .price-group {
         padding: 2rem 0;
-    }
-
-    .price-note {
-        background-color: var(--color-bg-light) !important;
     }
 
     /* Responsive adjustments */

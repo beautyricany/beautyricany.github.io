@@ -1,0 +1,24 @@
+---
+import PageLayout from '../layouts/page-layout.astro';
+import ImageGroup from '../components/image-group.astro';
+import ImageLightbox from '../components/image-lightbox.astro';
+import { imageGroups } from '../data/gallery';
+---
+
+<PageLayout title="Galerie" subtitle="Prohlédněte si výsledky naší práce">
+    <section class="gallery-section py-4">
+        <div class="container">
+            {imageGroups.map((group) => (
+                <ImageGroup imageGroup={group} />
+            ))}
+        </div>
+    </section>
+
+    <ImageLightbox />
+</PageLayout>
+
+<style>
+    .gallery-section {
+        padding: 2rem 0;
+    }
+</style>

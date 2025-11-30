@@ -1,6 +1,8 @@
 ---
 import type { Service } from '../data/services';
 import { formatPrice } from '../utils/utils';
+import { IMAGE_BASE_PATH } from '../utils/constants';
+import ImageLightbox from './image-lightbox.astro';
 
 interface Props {
     service: Service;
@@ -40,7 +42,17 @@ const { service } = Astro.props;
                                     {desc.title && desc.titleType === 'h5' && (
                                         <h5 class="mb-2 mb-md-3">{desc.title}</h5>
                                     )}
-                                    <p class="description-muted">{desc.text}</p>
+                                    {desc.title && desc.titleType === 'none' && desc.title && (
+                                        <h6 class="mb-2 mb-md-3">{desc.title}</h6>
+                                    )}
+                                    {desc.text && <p class="description-muted">{desc.text}</p>}
+                                    {desc.points && (
+                                        <ul class="custom-bullet-list">
+                                            {desc.points.map((point) => (
+                                                <li>{point}</li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -53,10 +65,16 @@ const { service } = Astro.props;
                         <div class="col-12">
                             <div class="service-images">
                                 <div class="row g-2 g-md-3">
-                                    {service.images.map((image) => (
+                                    {service.images.map((image, index) => (
                                         <div class="col-12 col-sm-6 col-lg-4">
                                             <div class="image-wrapper">
-                                                <img src={`/images/${image}`} alt={service.title} class="img-fluid rounded shadow-sm" />
+                                                <img 
+                                                    src={`${IMAGE_BASE_PATH}${image}`} 
+                                                    alt={service.title} 
+                                                    class="img-fluid rounded shadow-sm clickable-image" 
+                                                    data-index={index}
+                                                    data-src={`${IMAGE_BASE_PATH}${image}`}
+                                                />
                                             </div>
                                         </div>
                                     ))}
@@ -69,7 +87,32 @@ const { service } = Astro.props;
         </div>
 </article>
 
+<ImageLightbox />
+
 <style>
+    .custom-bullet-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .custom-bullet-list li {
+        position: relative;
+        padding-left: 1.75rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text);
+        line-height: 1.6;
+    }
+
+    .custom-bullet-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
     .service-detail-background {
         background-color: var(--color-bg-light);
         border: 0;
@@ -115,4 +158,19 @@ const { service } = Astro.props;
             font-size: 1.25rem;
         }
     }
-</style>
+
+    /* Scroll offset for fixed header */
+    article {
+        scroll-margin-top: 100px;
+    }
+
+    /* Clickable images */
+    .clickable-image {
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .clickable-image:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
