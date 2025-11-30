@@ -2,6 +2,8 @@
 import AboutHero from '../components/about-hero.astro';
 import PageContent from '../components/page-content.astro';
 import CtaSection from '../components/cta-section.astro';
+import ImageLightbox from '../components/image-lightbox.astro';
+import { IMAGE_BASE_PATH } from '../utils/constants';
 
 // About section content - to be included in index page
 ---
@@ -19,7 +21,7 @@ import CtaSection from '../components/cta-section.astro';
                     <p class="description-muted">Těší se na Vás majitelka Eva a tým PB.</p>
                 </div>
                 <div class="col-lg-6">
-                    <div class="placeholder-image">Fotka interiéru studia</div>
+                    <img src={`${IMAGE_BASE_PATH}/salon/uvod.jpg`} alt="Interiér studia" class="studio-intro-image" />
                 </div>
             </div>
         </div>
@@ -66,29 +68,21 @@ import CtaSection from '../components/cta-section.astro';
         <div class="container">
             <h2 class="section-title">Naše studio</h2>
             <div class="row g-4">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="studio-image">
-                        <div class="placeholder-image">Recepce</div>
+                <div class="col-md-6">
+                    <div class="studio-image clickable-image" data-src={`${IMAGE_BASE_PATH}/salon/s0.jpg`}>
+                        <img src={`${IMAGE_BASE_PATH}/salon/s0.jpg`} alt="Salon - recepce" class="img-fluid rounded" />
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="studio-image">
-                        <div class="placeholder-image">Ošetřovací místnost</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="studio-image">
-                        <div class="placeholder-image">Konzultační prostor</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="studio-image">
-                        <div class="placeholder-image">Produkty a vybavení</div>
+                <div class="col-md-6">
+                    <div class="studio-image clickable-image" data-src={`${IMAGE_BASE_PATH}/salon/s3.jpg`}>
+                        <img src={`${IMAGE_BASE_PATH}/salon/s3.jpg`} alt="Salon - ošetřovací místnost" class="img-fluid rounded" />
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <ImageLightbox />
 
     <CtaSection 
         title="Jste připraveni zažít rozdíl?"
@@ -110,7 +104,19 @@ import CtaSection from '../components/cta-section.astro';
         max-width: 100%;
     }
 
+    .studio-intro-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+    }
+
     @media (max-width: 576px) {
+        .studio-intro-image {
+            aspect-ratio: 16/9;
+        }
+
         .about-intro .placeholder-image {
             min-height: 200px;
             aspect-ratio: 16/9;
@@ -137,6 +143,22 @@ import CtaSection from '../components/cta-section.astro';
 
     .feature-icon {
         font-size: 3rem;
+    }
+
+    .studio-image {
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .studio-image:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+
+    .studio-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
     .studio-image .placeholder-image {

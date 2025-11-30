@@ -21,7 +21,7 @@ const collapseId = `gallery-${imageGroup.title.toLowerCase().replace(/\s+/g, '-'
         <div class="image-grid">
             {imageGroup.images.map((imageSrc) => (
                 <div class="image-item">
-                    <div class="image-wrapper">
+                    <div class="image-wrapper clickable-image" data-src={`${IMAGE_BASE_PATH}${imageSrc}`}>
                         <img 
                             src={`${IMAGE_BASE_PATH}${imageSrc}`}
                             alt={`${imageGroup.title} gallery image`}
@@ -65,6 +65,7 @@ const collapseId = `gallery-${imageGroup.title.toLowerCase().replace(/\s+/g, '-'
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        cursor: pointer;
     }
 
     .image-wrapper:hover {

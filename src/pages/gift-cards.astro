@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
+import ImageLightbox from '../components/image-lightbox.astro';
 import { IMAGE_BASE_PATH } from '../utils/constants';
 ---
 
@@ -10,12 +11,12 @@ import { IMAGE_BASE_PATH } from '../utils/constants';
                 <div class="col-lg-8">
                     <div class="text-center mb-5">
                         <p class="lead description-muted">
-                            Darujte doko nalý dárek s našimi dárkovými poukazy Permanent Beauty. Potěšte někoho výjimečného 
-                            profesionálními službami trvalého make-upu a nechte je vybrat si ošetření, které je udělá nejkrásnějšími.
+                            Darujte dokonalý dárek s našimi dárkovými poukazy Permanent Beauty. Potěšte někoho výjimečného 
+                            profesionálními službam a nechte je vybrat si ošetření, které je udělá nejkrásnějšími.
                         </p>
                         <p class="description-muted">
-                            Naše dárkové poukazy jsou platné pro všechny služby a lze je zakoupit v jakékoli částce. 
-                            Kontaktujte nás a objednejte si svůj personalizovaný dárkový poukaz ještě dnes!
+                            Naše dárkové poukazy jsou platné na všechny služby a lze je zakoupit v jakékoli částce. 
+                            Kontaktujte nás a objednejte si svůj dárkový poukaz ještě dnes!
                         </p>
                     </div>
                 </div>
@@ -23,9 +24,9 @@ import { IMAGE_BASE_PATH } from '../utils/constants';
 
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
-                    <div class="gift-card-image-wrapper">
+                    <div class="gift-card-image-wrapper clickable-image" data-src={`${IMAGE_BASE_PATH}gift-card.png`}>
                         <img 
-                            src={`${IMAGE_BASE_PATH}logo.png`}
+                            src={`${IMAGE_BASE_PATH}gift-card.png`}
                             alt="Permanent Beauty Gift Card" 
                             class="img-fluid rounded shadow-lg"
                         />
@@ -37,14 +38,15 @@ import { IMAGE_BASE_PATH } from '../utils/constants';
                 <div class="col-lg-8 text-center">
                     <h3 class="mb-4">Jak nakoupit</h3>
                     <p class="description-muted mb-4">
-                        Dárkové poukazy lze zakoupit osobně v našem studiu nebo nás kontaktovat přímo. 
-                        Vytvoříme krásnou personalizovanou kartu pro vašeho příjemce.
+                        Dárkové poukazy lze zakoupit osobně v našem salonu nebo nás kontaktovat přímo. 
                     </p>
                     <a href="/contact" class="btn btn-primary btn-lg px-5">Kontaktujte nás</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <ImageLightbox />
 </PageLayout>
 
 <style>
@@ -57,6 +59,7 @@ import { IMAGE_BASE_PATH } from '../utils/constants';
         padding: 2rem;
         background: linear-gradient(135deg, var(--color-bg-light) 0%, white 100%);
         border-radius: 12px;
+        cursor: pointer;
     }
 
     .gift-card-image-wrapper img {

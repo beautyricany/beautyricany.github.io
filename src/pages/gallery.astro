@@ -1,10 +1,11 @@
 ---
 import PageLayout from '../layouts/page-layout.astro';
 import ImageGroup from '../components/image-group.astro';
+import ImageLightbox from '../components/image-lightbox.astro';
 import { imageGroups } from '../data/gallery';
 ---
 
-<PageLayout title="Galerie" subtitle="Prohlédněte si naše portfolio přeměn trvalého make-upu">
+<PageLayout title="Galerie" subtitle="Prohlédněte si výsledky naší práce">
     <section class="gallery-section py-4">
         <div class="container">
             {imageGroups.map((group) => (
@@ -12,6 +13,8 @@ import { imageGroups } from '../data/gallery';
             ))}
         </div>
     </section>
+
+    <ImageLightbox />
 </PageLayout>
 
 <style>

@@ -43,17 +43,19 @@ import { contact } from '../data/contact';
                             </div>
                         </div>
 
-                        <div class="contact-info-card card shadow-sm">
+                        <div class="contact-info-card card shadow-sm email-card">
                             <div class="card-body p-4">
                                 <div class="contact-item-detail">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="contact-icon-large">✉️</div>
-                                        <div>
-                                            <h3 class="h6 fw-semibold text-secondary mb-1">Email</h3>
-                                            <p class="mb-0">
-                                                <a href={`mailto:${contact.email}`} class="contact-link-primary">{contact.email}</a>
-                                            </p>
+                                    <div class="email-layout text-center">
+                                        <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                                            <div class="contact-icon-large">✉️</div>
+                                            <h3 class="h6 fw-semibold text-secondary mb-0">Email</h3>
                                         </div>
+                                        <p class="mb-0">
+                                            <a href={`mailto:${contact.email}`} class="contact-link-primary">
+                                                {contact.email.split('@')[0]}<wbr />@{contact.email.split('@')[1]}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -161,6 +163,8 @@ import { contact } from '../data/contact';
         text-decoration: none;
         transition: opacity var(--transition-speed);
         font-weight: 500;
+        word-break: break-all;
+        overflow-wrap: break-word;
     }
 
     .contact-link-primary:hover {
@@ -176,6 +180,18 @@ import { contact } from '../data/contact';
 
     .social-icon-link:hover {
         transform: scale(1.15);
+    }
+
+    .email-layout {
+        width: 100%;
+    }
+
+    .email-card .card-body {
+        padding: 1rem 0.75rem !important;
+    }
+
+    .email-card .contact-link-primary {
+        font-size: 0.95rem;
     }
 
     @media (max-width: 767px) {
