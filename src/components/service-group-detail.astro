@@ -24,7 +24,17 @@ const { serviceGroup } = Astro.props;
                 {desc.title && desc.titleType === 'h5' && (
                     <h5 class="mb-3">{desc.title}</h5>
                 )}
-                <p class="description-muted">{desc.text}</p>
+                {desc.title && desc.titleType === 'none' && desc.title && (
+                    <h6 class="mb-3">{desc.title}</h6>
+                )}
+                {desc.text && <p class="description-muted">{desc.text}</p>}
+                {desc.points && (
+                    <ul class="custom-bullet-list">
+                        {desc.points.map((point) => (
+                            <li>{point}</li>
+                        ))}
+                    </ul>
+                )}
             </div>
         ))}
     </div>
@@ -42,5 +52,30 @@ const { serviceGroup } = Astro.props;
         </div>
     )}
 </div>
+
+<style>
+    .custom-bullet-list {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .custom-bullet-list li {
+        position: relative;
+        padding-left: 1.75rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text);
+        line-height: 1.6;
+    }
+
+    .custom-bullet-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+</style>
 
 
