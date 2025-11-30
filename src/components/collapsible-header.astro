@@ -10,33 +10,46 @@ interface Props {
 const { title, shortDescription, collapseId, showLink = false, linkHref } = Astro.props;
 ---
 
-<div class="collapsible-header mb-4 d-flex justify-content-between align-items-center">
-    <div class="flex-grow-1">
-        {showLink && linkHref ? (
-            <a href={linkHref} class="service-group-link">
-                <h2 class="section-title service-group-name mb-2">{title}</h2>
-            </a>
-        ) : (
-            <h2 class="section-title service-group-name mb-2">{title}</h2>
-        )}
-        {shortDescription && (
-            <p class="description-muted mb-0 text-start">{shortDescription}</p>
-        )}
+<div class="collapsible-header mb-4">
+    <!-- Title row with collapse button -->
+    <div class="row align-items-center mb-2">
+        <div class="col-12">
+            <div class="d-flex align-items-center gap-2 title-wrapper">
+                <div class="title-content">
+                    {showLink && linkHref ? (
+                        <a href={linkHref} class="service-group-link">
+                            <h2 class="section-title service-group-name mb-0">{title}</h2>
+                        </a>
+                    ) : (
+                        <h2 class="section-title service-group-name mb-0">{title}</h2>
+                    )}
+                </div>
+                <button 
+                    class="collapse-toggle-btn btn"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#${collapseId}`}
+                    aria-expanded="true"
+                    aria-controls={collapseId}
+                >
+                    <span class="toggle-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
     </div>
-    <button 
-        class="collapse-toggle-btn btn"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target={`#${collapseId}`}
-        aria-expanded="true"
-        aria-controls={collapseId}
-    >
-        <span class="toggle-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            </svg>
-        </span>
-    </button>
+    
+    <!-- Description row (full width) -->
+    {shortDescription && (
+        <div class="row">
+            <div class="col-12">
+                <p class="description-muted mb-0 text-start">{shortDescription}</p>
+            </div>
+        </div>
+    )}
 </div>
 
 <style>
@@ -66,8 +79,55 @@ const { title, shortDescription, collapseId, showLink = false, linkHref } = Astr
         color: var(--color-primary);
     }
 
+    .collapse-toggle-btn {
+        background: transparent;
+        border: none;
+        color: var(--color-secondary);
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .collapse-toggle-btn:hover {
+        color: var(--color-primary);
+    }
+
+    .collapse-toggle-btn[aria-expanded="false"] .toggle-icon {
+        transform: rotate(-90deg);
+    }
+
+    .toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .title-wrapper {
+        justify-content: space-between;
+    }
+
+    .title-content {
+        flex: 1;
+    }
+
+    /* Large screens: center the title */
+    @media (min-width: 992px) {
+        .title-wrapper {
+            position: relative;
+        }
+
+        .title-content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .collapse-toggle-btn {
+            margin-left: auto;
+        }
+    }
+
     /* Responsive adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
         .collapsible-header {
             text-align: left;
         }
