@@ -139,7 +139,7 @@ export const serviceGroups: ServiceGroup[] = [
                                     text: "Tato metoda je vhodná prakticky pro všechny typy pleti, je jednoduchá, bezpečná, bezbolestná a neuvěřitelně účinná."
                                 }
                 ],
-                images: ["dermabraze.jpg"]
+                images: ["derma_1.jpg", "derma_2.jpg"]
             }
         ],
         minimalServices: []
@@ -183,7 +183,7 @@ export const serviceGroups: ServiceGroup[] = [
                                     text: "Pro každého, kdo chce zvýraznit své vlastní řasy bez umělého prodlužování. Ideální je pro ženy, které chtějí přirozený, ale působivý vzhled."
                                 }
                 ],
-                images: ["lifting-ras.jpg"]
+                images: ["rasy.jpg",  "rasy_1.jpg", "rasy_2.png", "rasy_3.jpg"]
             }
         ],
         minimalServices: []
@@ -223,7 +223,7 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["obočí0.png"]
+                images: ["oboci_0.png", "oboci_1.jpeg", "oboci_2.jpg", "oboci.jpg"]
             }
         ],
         minimalServices: []
@@ -277,7 +277,7 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["pedikura-pristrojova.jpg"]
+                images: ["pedi.png", "pedi1.jpg", "pedi3.jpg"]
             },
             {
                 title: "Nehtová rovnátka",
@@ -305,7 +305,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Používáme výhradně osvědčené systémy nehtových rovnátek např. Podofix, Combiped..."
                     }
                 ],
-                images: ["nehtova-rovnatka.jpg"]
+                images: ["rovnatka_2.png", "rovnatka_0.jpg", "rovnatka_1.png", "rovnatka_3.png"]
             }
         ],
         minimalServices: []
@@ -354,7 +354,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Pasta obsahuje přírodní složky (včelí vosk, keratin, vitaminy a minerály), které vyživují nehtovou ploténku, zvyšují pružnost a podporují zdravý růst. Leštění zapracuje látky do struktury nehtu, takže lesk a ochranný efekt vydrží dlouho."
                     }
                 ],
-                images: ["p-shine.jpg"]
+                images: ["pshine_2.jpg", "pshine.png", "pshine_3.jpg"]
             }
         ],
         minimalServices: []
