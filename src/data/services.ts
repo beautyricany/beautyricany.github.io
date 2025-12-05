@@ -41,7 +41,7 @@ export enum HeadingType {
 export const serviceGroups: ServiceGroup[] = [
     {
         name: "Kosmetika",
-        shortDescription: "Nechte se hýčkat ošetřením které obnoví Vaši krásu i vnitřní pohodu",
+        shortDescription: "Nechte se hýčkat ošetřením, které obnoví Vaši krásu i vnitřní pohodu",
         description: [
             {
                 titleType: HeadingType.None,
@@ -177,7 +177,7 @@ export const serviceGroups: ServiceGroup[] = [
     },
     {
         name: "Lifting řas",
-        shortDescription: "Přirozeně půvabný pohled každý den, který podtrhne Vaši krásu",
+        shortDescription: "Přirozeně půvabný pohled, který podtrhuje Vaši krásu každý den",
         description: [
         ],
         images: [],
@@ -233,7 +233,7 @@ export const serviceGroups: ServiceGroup[] = [
                 description: [
                      {
                         titleType: HeadingType.None,
-                        text: "Bojíte-li se bolesti při tetování permanentního make-upu pak je tu pro vás ideální metoda s dlouhotrvajícím efektem."
+                        text: "Bojíte-li se bolesti při tetování permanentního make-upu, pak je tu pro vás ideální metoda s dlouhotrvajícím efektem."
                     },
                     {
                         titleType: HeadingType.None,
@@ -261,7 +261,7 @@ export const serviceGroups: ServiceGroup[] = [
     },
     {
         name: "Pedikúra",
-        shortDescription: "Dopřejte svým nohám péči kterou si zaslouží",
+        shortDescription: "Dopřejte svým nohám péči, kterou si zaslouží",
         description: [
         ],
         images: [],
@@ -350,7 +350,7 @@ export const serviceGroups: ServiceGroup[] = [
     },
     {
         name: "Manikúra",
-        shortDescription: "Dotek luxusu pro Vaše ruce. Každá manikúra je okamžikem kdy se cítíš vyjímečně.",
+        shortDescription: "Dotek luxusu pro Vaše ruce. Každá manikúra je okamžikem, kdy se cítíte výjimečně.",
         description: [
         ],
         images: [],
@@ -362,7 +362,7 @@ export const serviceGroups: ServiceGroup[] = [
                 description: [
                     {
                         titleType: HeadingType.None,
-                        text: " Klasická manikúra je tradiční procedura péče , která zahrnuje jemné ošetření nehtů, péči o ruce, odstranění kůžičky,  úpravu tvaru nehtů a aplikaci laku dle vlastního výběru. Výsledkem klasické manikúry jsou jemné ruce a krásné upravené nehty."
+                        text: "Klasická manikúra je tradiční procedura péče, která zahrnuje jemné ošetření nehtů, péči o ruce, odstranění kůžičky, úpravu tvaru nehtů a aplikaci laku dle vlastního výběru. Výsledkem klasické manikúry jsou jemné ruce a krásně upravené nehty."
                     }
                 ],
                 images: ["mani.png", "mani1.jpg", "mani2.png"]
@@ -572,7 +572,7 @@ export const serviceGroups: ServiceGroup[] = [
                     {
                         title: "Pro koho je lymfodrenáž vhodná?",
                         titleType: HeadingType.H4,
-                        text: "Lymfodrenáž doporučujeme všem jako podporu hubnutí, pro redukci celulitidy, těm kteří trpí otoky, mají sedavé zaměstnání, sportují, nebo chtějí zlepšit stav pokožky. Výborně funguje také jako prevence a doplněk k péči o zdraví i krásu."
+                        text: "Lymfodrenáž doporučujeme všem jako podporu hubnutí, pro redukci celulitidy, těm, kteří trpí otoky, mají sedavé zaměstnání, sportují, nebo chtějí zlepšit stav pokožky. Výborně funguje také jako prevence a doplněk k péči o zdraví i krásu."
                     },
                     {
                         title: "Doporučená aplikace procedury:",
