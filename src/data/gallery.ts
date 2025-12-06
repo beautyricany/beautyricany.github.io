@@ -5,7 +5,7 @@ export interface ImageGroup {
 
 export const imageGroups: ImageGroup[] = [
     {
-        title: "Naše studio",
+        title: "Náš salon",
         images: [
             "salon/s1.jpg",
             "salon/s2.jpg",

@@ -164,8 +164,11 @@ export const serviceGroups: ServiceGroup[] = [
                                         "omladit a regenerovat pleť",
                                         "celkově tonizovat pleť"
                                     ],
-                                    text: "Tato metoda je vhodná prakticky pro všechny typy pleti, je jednoduchá, bezpečná, bezbolestná a neuvěřitelně účinná."
-                                }
+                                },
+                                {
+                                    titleType: HeadingType.None,
+                                     text: "Tato metoda je vhodná prakticky pro všechny typy pleti, je jednoduchá, bezpečná, bezbolestná a neuvěřitelně účinná."
+                                },
                 ],
                 images: ["derma_1.jpg", "derma_2.jpg"]
             }
@@ -392,7 +395,7 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Pasta obsahuje přírodní složky (včelí vosk, keratin, vitaminy a minerály), které vyživují nehtovou ploténku, zvyšují pružnost a podporují zdravý růst. Leštění zapracuje látky do struktury nehtu, takže lesk a ochranný efekt vydrží dlouho."
                     }
                 ],
-                images: ["pshine_2.jpg", "pshine.png", "pshine_3.jpg"]
+                images: ["pshine.png", "pshine_2.jpg", "pshine_3.jpg"]
             }
         ],
         minimalServices: [
