@@ -22,16 +22,14 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
             <table class="table table-hover mb-0">
                 <tbody>
                     {serviceGroup.services.map((service) => (
-                        <tr>
-                            <td class="service-name">{service.title}</td>
-                            <td class="service-price text-end">{formatPrice(service.price)}</td>
-                        </tr>
-                    ))}
-                    {serviceGroup.minimalServices.map((service) => (
-                        <tr>
-                            <td class="service-name">{service.title}</td>
-                            <td class="service-price text-end">{formatPrice(service.price)}</td>
-                        </tr>
+                        <>
+                            {service.subServices.map((subService, index) => (
+                                <tr class={index === 0 ? 'first-subservice-row' : ''}>
+                                    <td class="service-name">{subService.title}</td>
+                                    <td class="service-price text-end">{formatPrice(subService.price)}</td>
+                                </tr>
+                            ))}
+                        </>
                     ))}
                 </tbody>
             </table>
@@ -46,14 +44,29 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
     }
 
     .card-header {
-        background-color: var(--color-secondary);
+        background-color: white;
         padding: 1rem 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+        position: relative;
     }
 
     .price-list-title {
-        color: white;
+        color: var(--color-secondary);
         font-size: 1.5rem;
         font-weight: 600;
+        position: relative;
+        display: inline-block;
+        margin-bottom: -1px;
+    }
+
+    .price-list-title::after {
+        content: '';
+        position: absolute;
+        bottom: -1.5px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--color-primary);
     }
 
     .table {
@@ -79,6 +92,10 @@ const { serviceGroup, showHeader = true, highlightPrices = false } = Astro.props
 
     .table tbody tr:last-child td {
         border-bottom: none;
+    }
+
+    .first-subservice-row td {
+        padding-top: 1.25rem;
     }
 
     .service-name {
