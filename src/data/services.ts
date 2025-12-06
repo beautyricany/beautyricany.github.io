@@ -5,19 +5,18 @@ export interface ServiceGroup {
     shortDescription?: string;
     description: Description[];
     images: string[];
-    services: Service[];
-    minimalServices: MinimalService[];
+    services: MainService[];
 }
 
-export interface Service {
+export interface MainService {
     title: string;
     shortDescription?: string;
-    price: number;
     description: Description[];
     images: string[];
+    subServices: SubService[];
 }
 
-export interface MinimalService {
+export interface SubService {
     title: string;
     price: number;
 }
@@ -61,7 +60,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Základní kosmetické ošetření",
                 shortDescription: "Kompletní péče o pleť s diamantovou dermabrazí a relaxační masáží",
-                price: 1400,
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -81,12 +79,19 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Délka ošetření cca 60 minut"
                     }
                 ],
-                images: ["k2.jpg", "k3.jpg", "k1.jpg"]
+                images: ["k2.jpg", "k3.jpg", "k1.jpg"],
+                subServices: [
+                    { title: "Základní kosmetické ošetření", price: 1400 },
+                    { title: "Barvení řas v rámci kosmetiky", price: 100 },
+                    { title: "Barvení obočí v rámci kosmetiky", price: 100 },
+                    { title: "Barvení obočí samostatně", price: 200 },
+                    { title: "Barvení řas samostatně", price: 200 },
+                    { title: "Barvení řas a obočí samostatně", price: 350 },
+                ]
             },
             {
                 title: "Regenerační kosmetické ošetření",
                 shortDescription: "Intenzivní regenerace pleti s alginátovou maskou a prodlouženou masáží",
-                price: 1600,
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -107,16 +112,12 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Délka ošetření cca 90 minut"
                     }
                 ],
-                images: ["kr.png"]
+                images: ["kr.png"],
+                subServices: [
+                    { title: "Regenerační kosmetické ošetření", price: 1600 },
+                ]
             },
         ],
-        minimalServices: [
-            { title: "Barvení řas v rámci kosmetiky", price: 100 },
-            { title: "Barvení obočí v rámci kosmetiky", price: 100 },
-            { title: "Barvení obočí samostatně", price: 200 },
-            { title: "Barvení řas samostatně", price: 200 },
-            { title: "Barvení řas a obočí samostatně", price: 350 },
-        ]
     },
     {
         name: "Dermabraze",
@@ -129,7 +130,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Diamantová mikrodermabraze",
                 shortDescription: "Šetrné omlazení pleti pomocí diamantových hlavic",
-                price: 800, // TODO: od cena
                 description: [
                                 {
                                     titleType: HeadingType.None,
@@ -170,13 +170,13 @@ export const serviceGroups: ServiceGroup[] = [
                                      text: "Tato metoda je vhodná prakticky pro všechny typy pleti, je jednoduchá, bezpečná, bezbolestná a neuvěřitelně účinná."
                                 },
                 ],
-                images: ["derma_1.jpg", "derma_2.jpg"]
+                images: ["derma_1.jpg", "derma_2.jpg"],
+                subServices: [
+                    { title: "Diamantová mikrodermabraze - obličej", price: 800 },
+                    { title: "Diamantová mikrodermabraze - obličej, krk a dekolt", price: 1300 },
+                ]
             }
         ],
-        minimalServices: [
-            { title: "Diamantová mikrodermabraze - obličej", price: 800 },
-            { title: "Diamantová mikrodermabraze - obličej, krk a dekolt", price: 1300 },
-        ]
     },
     {
         name: "Lifting řas",
@@ -188,7 +188,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Lifting řas",
                 shortDescription: "Přirozeně krásný pohled bez řasenky",
-                price: 42,
                 description: [
                                 {
                                     titleType: HeadingType.None,
@@ -217,10 +216,12 @@ export const serviceGroups: ServiceGroup[] = [
                                     text: "Pro každého, kdo chce zvýraznit své vlastní řasy bez umělého prodlužování. Ideální je pro ženy, které chtějí přirozený, ale působivý vzhled."
                                 }
                 ],
-                images: ["rasy.jpg",  "rasy_1.jpg", "rasy_2.png", "rasy_3.jpg"]
+                images: ["rasy.jpg",  "rasy_1.jpg", "rasy_2.png", "rasy_3.jpg"],
+                subServices: [
+                    { title: "Lifting řas s barvením", price: 1050 },
+                ]
             }
         ],
-        minimalServices: []
     },
     {
         name: "Laminace obočí",
@@ -232,7 +233,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Laminace obočí",
                 shortDescription: "Dokonale upravené obočí na několik týdnů",
-                price: 42,
                 description: [
                      {
                         titleType: HeadingType.None,
@@ -257,10 +257,12 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["oboci_0.png", "oboci_1.jpeg", "oboci_2.jpg", "oboci.jpg"]
+                images: ["oboci_0.png", "oboci_1.jpeg", "oboci_2.jpg", "oboci.jpg"],
+                subServices: [
+                    { title: "Laminace obočí", price: 900}   
+                ]
             }
         ],
-        minimalServices: []
     },
     {
         name: "Pedikúra",
@@ -272,7 +274,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Přístrojová brusná pedikúra",
                 shortDescription: "Moderní odborné ošetření nohou bez namáčení",
-                price: 750,
                 description: [
                     {
                         titleType: HeadingType.H4,
@@ -311,12 +312,19 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["pedi.png", "pedi1.jpg", "pedi3.jpg"]
+                images: ["pedi.png", "pedi1.jpg", "pedi3.jpg"],
+                subServices: [
+                    { title: "Přístrojová brusná pedikúra", price: 750 },
+                    { title: "Lakování k pedikúře - Gel lak", price: 250 },
+                    { title: "Lakování k pedikúře - klasický lak", price: 190 },
+                    { title: "Ošetření kuřího oka", price: 150 },
+                    { title: "Samostatné lakování s úpravou nehtů - Gel lak", price: 650 },
+                    { title: "Samostatné lakování s úpravou nehtů - klasický lak", price: 550 },
+                ]
             },
             {
                 title: "Nehtová rovnátka",
                 shortDescription: "Řešení zarostlých a deformovaných nehtů bez operace",
-                price: 550,  // TODO: add od...
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -339,17 +347,13 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Používáme výhradně osvědčené systémy nehtových rovnátek např. Podofix, Combiped..."
                     }
                 ],
-                images: ["rovnatka_2.png", "rovnatka_0.jpg", "rovnatka_1.png", "rovnatka_3.png"]
+                images: ["rovnatka_2.png", "rovnatka_0.jpg", "rovnatka_1.png", "rovnatka_3.png"],
+                subServices: [
+                    { title: "Nehtová rovnátka", price: 550 },
+                    { title: "Nehtová rovnátka Podofix", price: 850 },
+                ]
             }
         ],
-        minimalServices: [
-            { title: "Nehtová rovnátka Podofix", price: 850 },
-            { title: "Lakování k pedikúře - Gel lak", price: 250 },
-            { title: "Lakování k pedikúře - klasický lak", price: 190 },
-            { title: "Ošetření kuřího oka", price: 150 },
-            { title: "Samostatné lakování s úpravou nehtů - Gel lak", price: 650 },
-            { title: "Samostatné lakování s úpravou nehtů - klasický lak", price: 550 },
-        ]
     },
     {
         name: "Manikúra",
@@ -361,19 +365,24 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Klasická manikúra",
                 shortDescription: "Tradiční péče o nehty a ruce s lakováním",
-                price: 450,
                 description: [
                     {
                         titleType: HeadingType.None,
                         text: "Klasická manikúra je tradiční procedura péče, která zahrnuje jemné ošetření nehtů, péči o ruce, odstranění kůžičky, úpravu tvaru nehtů a aplikaci laku dle vlastního výběru. Výsledkem klasické manikúry jsou jemné ruce a krásně upravené nehty."
                     }
                 ],
-                images: ["mani.png", "mani1.jpg", "mani2.png"]
+                images: ["mani.png", "mani1.jpg", "mani2.png"],
+                subServices: [
+                    { title: "Klasická manikúra", price: 450 },
+                    { title: "Manikúra s lakováním", price: 590 },
+                    { title: "Manikúra + Gel lak", price: 690 },
+                    { title: "Parafínový zábal samostatně", price: 250 },
+                    { title: "Parafínový zábal k manikúře", price: 150 }
+                ]
             },
             {
                 title: "P-Shine",
                 shortDescription: "Přirozený lesk a síla pro vaše nehty",
-                price: 590,
                 description: [
                     {
                         titleType: HeadingType.H4,
@@ -395,15 +404,12 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Pasta obsahuje přírodní složky (včelí vosk, keratin, vitaminy a minerály), které vyživují nehtovou ploténku, zvyšují pružnost a podporují zdravý růst. Leštění zapracuje látky do struktury nehtu, takže lesk a ochranný efekt vydrží dlouho."
                     }
                 ],
-                images: ["pshine.png", "pshine_2.jpg", "pshine_3.jpg"]
+                images: ["pshine.png", "pshine_2.jpg", "pshine_3.jpg"],
+                subServices: [
+                    { title: "P-Shine", price: 590 }
+                ]
             }
         ],
-        minimalServices: [
-            { title: "Manikúra s lakováním", price: 590 },
-            { title: "Manikúra + Gel lak", price: 690 },
-            { title: "Parafínový zábal samostatně", price: 250 },
-            { title: "Parafínový zábal k manikúře", price: 150 }
-        ]
     },
     {
         name: "Epilace",
@@ -415,7 +421,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "ItalWax",
                 shortDescription: "Epilace voskem",
-                price: 150, // od price
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -481,12 +486,22 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: ["epil.png", "epil2.png", "epil3.png"]
+                images: ["epil.png", "epil2.png", "epil3.png"],
+                subServices: [
+                    { title: "ItalWax epilace voskem - Lýtka", price: 450 },
+                    { title: "ItalWax epilace voskem - Nohy celé", price: 850 },
+                    { title: "ItalWax epilace voskem - Ruce", price: 490 },
+                    { title: "ItalWax epilace voskem - Podpaží", price: 290 },
+                    { title: "ItalWax epilace voskem - Bikini line", price: 350 },
+                    { title: "ItalWax epilace voskem - Horní ret", price: 150 },
+                    { title: "ItalWax epilace voskem - Brada", price: 150 },
+                    { title: "ItalWax epilace voskem - Kotlety", price: 150 },
+                    { title: "ItalWax epilace voskem - Obličej komplet", price: 390 },
+                ]
             },
             {
                 title: "Laserová IPL epilace",
                 shortDescription: "Moderní cesta k hladké pokožce",
-                price: 500,
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -523,26 +538,17 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Objednejte se na IPL epilaci a zjistěte, jak snadné a příjemné může být zbavit se chloupků jednou provždy. Rádi vám poradíme, která ošetření jsou pro vás nejvhodnější."
                     }
                 ],
-                images: ["ipl1.png", "ipl2.png", "ipl3.jpg"]
+                images: ["ipl1.png", "ipl2.png", "ipl3.jpg"],
+                subServices: [
+                    { title: "Epilace trvalá - Horní ret", price: 500 },
+                    { title: "Epilace trvalá - Brada", price: 800 },
+                    { title: "Epilace trvalá - Kotlety", price: 900 },
+                    { title: "Epilace trvalá - Tváře", price: 1100 },
+                    { title: "Epilace trvalá - Podpaží", price: 1400 },
+                    { title: "Epilace trvalá - Bikini line", price: 1800 }
+                ]
             }
         ],
-        minimalServices: [
-            { title: "Epilace voskem - Lýtka", price: 450 },
-            { title: "Epilace voskem - Nohy celé", price: 850 },
-            { title: "Epilace voskem - Ruce", price: 490 },
-            { title: "Epilace voskem - Podpaží", price: 290 },
-            { title: "Epilace voskem - Bikini line", price: 350 },
-            { title: "Epilace voskem - Horní ret", price: 150 },
-            { title: "Epilace voskem - Brada", price: 150 },
-            { title: "Epilace voskem - Kotlety", price: 150 },
-            { title: "Epilace voskem - Obličej komplet", price: 390 },
-            { title: "Epilace trvalá - Horní ret", price: 500 },
-            { title: "Epilace trvalá - Brada", price: 800 },
-            { title: "Epilace trvalá - Kotlety", price: 900 },
-            { title: "Epilace trvalá - Tváře", price: 1100 },
-            { title: "Epilace trvalá - Podpaží", price: 1400 },
-            { title: "Epilace trvalá - Bikini line", price: 1800 }
-        ]
     },
     {
         name: "Redukce celulitidy a hubnutí",
@@ -554,7 +560,6 @@ export const serviceGroups: ServiceGroup[] = [
             {
                 title: "Lymfodrenáž",
                 shortDescription: "Podpora lymfatického systému a detoxikace organismu",
-                price: 290, // TODO: od cena
                 description: [
                     {
                         titleType: HeadingType.None,
@@ -588,12 +593,18 @@ export const serviceGroups: ServiceGroup[] = [
                         text: "Lymfodrenáž není vhodná při akutních zánětech, infekcích, žilní trombóze, závažných srdečních onemocněních nebo při neléčené hypertenzi. Pokud si nejste jistí, rádi vám poradíme."
                     }
                 ],
-                images: ["lymfo.jpg"]
+                images: ["lymfo.jpg"],
+                subServices: [
+                    {title: "Přístrojová Lymfodrenáž 30 min", price: 290},
+                    {title: "Přístrojová Lymfodrenáž 45 min", price: 350},
+                    {title: "Přístrojová Lymfodrenáž 60 min", price: 390},
+                    {title: "Lymfodrenáž Balíček ošetření 1 (10x45´)", price: 3000},
+                    {title: "Lymfodrenáž Balíček ošetření 2 (10x60´)", price: 3500},
+                ]
             },
             {
                 title: "Vacupress",
                 shortDescription: "Tvarování postavy a redukce celulitidy přístrojem Bentlon Shapemaster",
-                price: 1000,
                 description: [
                     {
                         titleType: HeadingType.H4,
@@ -616,16 +627,12 @@ export const serviceGroups: ServiceGroup[] = [
                         ]
                     }
                 ],
-                images: [ "vacu1.png", "vacu2.png" ]
+                images: [ "vacu1.png", "vacu2.png" ],
+                subServices: [
+                    { title: "Vacupress", price: 1000 },
+                ]
             }
         ],
-        minimalServices: [
-            {title: "Přístrojová Lymfodrenáž 30 min", price: 290},
-            {title: "Přístrojová Lymfodrenáž 45 min", price: 350},
-            {title: "Přístrojová Lymfodrenáž 60 min", price: 390},
-            {title: "Lymfodrenáž Balíček ošetření 1 (10x45´)", price: 3000},
-            {title: "Lymfodrenáž Balíček ošetření 2 (10x60´)", price: 3500},
-        ]
     }
 ]
 

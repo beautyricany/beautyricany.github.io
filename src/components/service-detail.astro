@@ -1,11 +1,11 @@
 ---
-import type { Service } from '../data/services';
+import type { MainService } from '../data/services';
 import { formatPrice } from '../utils/utils';
 import { IMAGE_BASE_PATH } from '../utils/constants';
 import ImageLightbox from './image-lightbox.astro';
 
 interface Props {
-    service: Service;
+    service: MainService;
 }
 
 const { service } = Astro.props;
