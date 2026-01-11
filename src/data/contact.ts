@@ -15,5 +15,5 @@ export const contact: Contact = {
     email: "salonpermanentbeauty@seznam.cz",
     phone: "+420 608 265 734",
     facebook: "https://www.facebook.com/people/Salon-Permanent-Beauty/100075730395955/?sk=about",
-    instagram: "https://instagram.com/permanentbeauty"
+    instagram: "https://www.instagram.com/salonpermanentbeauty/"
 };
